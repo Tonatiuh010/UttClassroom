@@ -1,6 +1,15 @@
-<body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
+<div>
+  <header-component></header-component>
+  <div class="container bg-gray-50 rounded-b-md p-3 mb-3 shadow-md">
+    <div class=" font-sans text-lg font-semibold">
+      <h1 class="align-middle">Informacion del grupo</h1>
+    </div>
   </div>
-</body>
+  <div class="container bg-gray-50 rounded-sm p-3 shadow-md">
+    <carousel-component></carousel-component>
+    <router-outlet>
+      <app-nav-menu></app-nav-menu>
+    </router-outlet>
+  </div>
+</div>
+

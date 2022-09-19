@@ -1,9 +1,6 @@
-<header>
-  <nav class="mb-3 bg-red-800 navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
+<div>
+  <nav class="pl-6 bg-gray-200 navbar navbar-expand-sm navbar-toggleable-sm navbar-light flex justify-start h-16 pt-7 rounded-t-md">
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">
-        <img src="./src/img/Logo-UTT-1.png">
-      </a>
       <button
         class="font-sans text-lg font-semibold text-white navbar-toggler"
         type="button"
@@ -11,34 +8,26 @@
         data-target=".navbar-collapse"
         aria-label="Toggle navigation"
         [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
+        (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-        [ngClass]="{ show: isExpanded }"
-      >
+        [ngClass]="{ show: isExpanded }">
         <ul class="flex-grow navbar-nav">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="font-sans text-lg font-semibold text-white nav-link" [routerLink]="['/']">Home</a>
+          <li>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 rounded-t-lg px-5 mr-2" [routerLink]="['/']">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="font-sans text-lg font-semibold text-white nav-link" [routerLink]="['/counter']"
-              >Counter</a
-            >
+          <li>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 rounded-t-lg px-5 mr-2" [routerLink]="['/counter']"
+              >Counter</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="font-sans text-lg font-semibold text-white nav-link" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
+          <li>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 rounded-t-lg px-5 mr-2" [routerLink]="['/fetch-data']"
+              >Fetch data</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-</header>
+</div>
