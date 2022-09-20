@@ -1,0 +1,33 @@
+<div>
+  <nav class="pl-6 bg-gray-200 navbar navbar-expand-sm navbar-toggleable-sm navbar-light flex justify-start h-16 pt-7 rounded-t-md">
+    <div class="container">
+      <button
+        class="font-sans text-lg font-semibold text-white navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }">
+        <ul class="flex-grow navbar-nav">
+          <li>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 rounded-t-lg px-5 mr-2" [routerLink]="['/']">Home</a>
+          </li>
+          <li>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 rounded-t-lg px-5 mr-2" [routerLink]="['/counter']"
+              >Counter</a>
+          </li>
+          <li>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 rounded-t-lg px-5 mr-2" [routerLink]="['/fetch-data']"
+              >Fetch data</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
