@@ -2,5 +2,12 @@
   <app-nav-menu></app-nav-menu>
   <div class="container">
     <router-outlet></router-outlet>
+
+    <div *ngFor="let item of alumnos">
+      <img src=" {{item.image}} " alt="photo student">
+      <p>Name: {{item.name}} </p>
+      <p>Gender: {{item.gender}} </p>
+    </div>
   </div>
+
 </body>
