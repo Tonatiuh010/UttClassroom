@@ -1,27 +1,28 @@
-var builder = WebApplication.CreateBuilder(args);
+using Engine.Constants;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+app.MapGet("/", () => "Classroom API is working...");
 
-// Configure the HTTP request pipeline.
+var connstring = builder.Configuration.GetConnectionString(C.CTL_ACC);
+
+//ControlAccessDAL.ConnString = builder.Configuration.GetConnectionString(C.CTL_ACC);
+//ControlAccessDAL.SetOnConnectionException((ex, msg) => Console.WriteLine($"Error Opening connection {msg} - {ex.Message}"));
+
 if (!app.Environment.IsDevelopment())
 {
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
-
-app.MapFallbackToFile("index.html");;
+    pattern: "{controller}/{action=Index}/{id?}"
+);
 
 app.Run();

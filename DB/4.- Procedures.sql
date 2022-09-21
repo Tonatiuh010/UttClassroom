@@ -313,6 +313,3 @@ DELIMITER ;
 SET @msg = null;
 CALL GET_GROUP_STUDENTS(NULL, NULL, @msg);
 SELECT @msg;
-
-/*################ GET_LABOR ###################*/
-
