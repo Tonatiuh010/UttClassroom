@@ -1,4 +1,5 @@
 using Engine.Constants;
+using Engine.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +8,7 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 app.MapGet("/", () => "Classroom API is working...");
 
-var connstring = builder.Configuration.GetConnectionString(C.CTL_ACC);
-
-//ControlAccessDAL.ConnString = builder.Configuration.GetConnectionString(C.CTL_ACC);
+ClassroomCredentials.ConnectionCallback = () => builder.Configuration.GetConnectionString(C.CLASSROOM);
 //ControlAccessDAL.SetOnConnectionException((ex, msg) => Console.WriteLine($"Error Opening connection {msg} - {ex.Message}"));
 
 if (!app.Environment.IsDevelopment())

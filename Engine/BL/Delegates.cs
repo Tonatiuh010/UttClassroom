@@ -1,7 +1,7 @@
 using System;
 using Engine.BO;
 
-namespace Engine.BL.Delegates;
+namespace Engine.BL;
 
 public static class Delegates {
     // Errors
