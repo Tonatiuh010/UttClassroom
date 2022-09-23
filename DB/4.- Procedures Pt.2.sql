@@ -119,8 +119,6 @@ SET @msg = null;
 CALL GET_MAJOR(1, @msg);
 SELECT @msg;
 
-SELECT * FROM ASSET
-
 /*################ GET_SCHOLARLY ###################*/
 
 DROP PROCEDURE IF EXISTS GET_SCHOLARLY;
