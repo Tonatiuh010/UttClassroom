@@ -11,18 +11,21 @@ using DataService.MySQL;
 using Engine.BO;
 using Engine.Constants;
 using Engine.Interfaces;
-using Engine.Service;
+using Engine.Services;
 using MySql.Data.MySqlClient;
 using I = Engine.DAL.Classes;
+using D = Engine.BL.Delegates;
+using Org.BouncyCastle.Crypto.Digests;
+using System.Collections.Specialized;
 
 namespace Engine.DAL
 {
-    internal class ClassroomDAL : I.DAL
+    public class ClassroomDAL : I.DAL
     {
         public delegate void DALCallback(ClassroomDAL dal);
 
 
-        public static ClassroomDAL Instance = new(ClassroomCredentials.Instance);        
+        public static ClassroomDAL Instance => new(ClassroomCredentials.Instance);        
         private ClassroomDAL(IConectionString? conn) : base(conn) { }
 
 
@@ -103,7 +106,7 @@ namespace Engine.DAL
                             {
                                 Id = Validate.getDefaultIntIfDBNull(reader["LABOR_CONTACT"])
                             },
-                            //IsStudy = Validate.getDefaultIntIfDBNull(reader["IS_STUDY"])
+                            IsStudy = Validate.getDefaultBoolIfDBNull(reader["IS_STUDY"])
                         }
 
                     });                
@@ -163,7 +166,7 @@ namespace Engine.DAL
             return model;
         }
 
-        public List<Asset> GetAssets(int? id, string? code, string group)
+        public List<Asset> GetAssets(int? id, string? code, string? group)
         {
             List<Asset> model = new();
 
@@ -258,13 +261,136 @@ namespace Engine.DAL
                             Phone = Validate.getDefaultStringIfDBNull(reader["PHONE1"]),
                             Phone2 = Validate.getDefaultStringIfDBNull(reader["PHONE2"]),
                         },
-                        //IsEmergency = Validate.getDefaultIntIfDBNull(reader["IS_EMERGENCY"])                        
+                        IsEmergency = Validate.getDefaultBoolIfDBNull(reader["IS_EMERGENCY"])                        
                     });
                 }
 
                 reader.Close();
 
-            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetContacts", msg, ex));
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetFamilyContacts", msg, ex));
+
+            return model;
+        }
+
+        public List<Group> GetGroups(int? id, string? code)
+        {
+            List<Group> model = new();
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_GROUPS, CommandType.StoredProcedure);
+
+                IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
+                cmd.Parameters.Add(CreateParameter("IN_GROUP", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(CreateParameter("IN_GROUP_CODE", id, MySqlDbType.String));
+                cmd.Parameters.Add(pResult);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model.Add(new()
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["GROUP_ID"]),
+                        Code = Validate.getDefaultStringIfDBNull(reader["GROUP_CODE"]),
+                        Key = Validate.getDefaultStringIfDBNull(reader["GROUP_KEY"]),
+                        Quarter = Validate.getDefaultIntIfDBNull(reader["QUARTER"]),
+                        Major = new Major()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["MAJOR_ID"]),
+                            Code = Validate.getDefaultStringIfDBNull(reader["MAJOR_CODE"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["MAJOR"]),
+                            Level = new Asset()
+                            {
+                                Id = Validate.getDefaultIntIfDBNull(reader["LEVEL_ID"]),
+                                Code = Validate.getDefaultStringIfDBNull(reader["LEVEL_CODE"]),
+                                Name = Validate.getDefaultStringIfDBNull(reader["LEVEL"])
+                            }
+                        },
+                        Field = new Asset()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["FIELD_ID"]),
+                            Code = Validate.getDefaultStringIfDBNull(reader["FIELD_CODE"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["FIELD"])
+                        },
+                        Period = new Asset()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["PERIOD_ID"]),
+                            Code = Validate.getDefaultStringIfDBNull(reader["PERIOD_CODE"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["PERIOD"])
+                        },
+                        Description = Validate.getDefaultStringIfDBNull(reader["DESCRIPTION"]),
+                    });
+                }
+
+                reader.Close();
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetGroups", msg, ex));
+
+
+            return model;
+        }
+
+        private void GetGroupStudents(int? groupId, int? studentId, D.CallbackReader callback)
+        {            
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_GROUP_STUDENTS, CommandType.StoredProcedure);
+
+                IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
+                cmd.Parameters.Add(CreateParameter("IN_GROUP", groupId, MySqlDbType.Int32));
+                cmd.Parameters.Add(CreateParameter("IN_STUDENT", studentId, MySqlDbType.Int32));
+                cmd.Parameters.Add(CreateParameter("IN_CURSED", false, MySqlDbType.Int16));
+                /* IS CURSED AS a parameter */
+                cmd.Parameters.Add(pResult);
+
+                using var reader = cmd.ExecuteReader();
+
+                callback(reader);                
+
+                reader.Close();
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetGroupStudents", msg, ex));
+            
+        }
+
+        public List<Student> GetGroupStudents(int groupId)
+        {
+            List<Student> model = new();
+
+            GetGroupStudents( groupId, null, reader => {
+               
+                while (reader.Read())
+                {
+                    model.Add(new()
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["STUDENT_ID"]),
+                        Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CDOE"]),
+                        Name = Validate.getDefaultStringIfDBNull(reader["STUDENT_NAME"]),
+                        LastName = Validate.getDefaultStringIfDBNull(reader["STUDENT_LAST_NAME"]),
+                        Birth = Validate.getDefaultDateIfDBNull(reader["STUDENT_BIRTH"])
+                    });
+                }                
+            });
+
+            return model;
+        }
+
+        public Group? GetStudentGroup(int studentId)
+        {
+            Group? model = null;
+
+            GetGroupStudents(null, studentId, reader => {
+
+                if (reader.Read())
+                {
+                    model = new()
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["GROUP_ID"]),
+                        Code = Validate.getDefaultStringIfDBNull(reader["GROUP_CODE"]),
+                        Key = Validate.getDefaultStringIfDBNull(reader["GROUP_KEY"]),
+                        Quarter = Validate.getDefaultIntIfDBNull(reader["QUARTER"]),
+                        Description = Validate.getDefaultStringIfDBNull(reader["DESCRIPTION"])
+
+                    };
+                }
+            });
 
             return model;
         }

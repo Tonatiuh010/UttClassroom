@@ -15,14 +15,6 @@ namespace Engine.Constants {
         public const string ENABLED = "ENABLED";
         public const string DISABLED = "DISABLED";
 
-        public const string EmployeeCsv = "employees.csv";
-        public const string AccessCsv = "access.csv";
-        public const string CardCsv = "cards.csv";
-        public const string JobsCsv = "jobs.csv";
-        public const string DepartamentsCsv = "departament.csv";
-        public const string PositionsCsv = "positions.csv";
-
-
         /* Connection Strings */
         public const string CLASSROOM = "DB_CLASSROOM";
     }

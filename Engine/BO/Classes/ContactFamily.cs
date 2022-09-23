@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Engine.Service.DataCollector;
+using Engine.Services.DataCollector;
 using Engine.Interfaces.DataCollector;
 
 namespace Engine.BO

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Engine.BO;
 using Engine.Interfaces.DataCollector;
 
-namespace Engine.Service.DataCollector
+namespace Engine.Services.DataCollector
 {
     public class GroupStudentsCollector : IGroupStudentsCollector
     {
-        public static IGroupStudentsCollector.SearchStudents? SearchStudents { get; set; } = null;
-        public static GroupStudentsCollector Instance(int groupId) => new(SearchStudents, groupId);
+        public static IGroupStudentsCollector.SearchStudents? SearchStudents { get; set; }
+        public static GroupStudentsCollector Instance(int groupId) 
+            => new(SearchStudents, groupId);
 
         public int GroupId { get; set; }
         public IGroupStudentsCollector.SearchStudents? GetStudents { get; }

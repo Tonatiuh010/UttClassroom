@@ -15,7 +15,7 @@ namespace Engine.BO
         {
             get
             {
-                if (_instance == null) _instance = new Validate();
+                _instance ??= new Validate();
                 return _instance;
             }
         }
@@ -149,6 +149,10 @@ namespace Engine.BO
         public long getDefaultLongIfDBNull(object obj)
         {
             return Convert.ToInt64(getDefaultIfDBNull(obj, TypeCode.DateTime));
+        }
+
+        public bool getDefaultBoolIfDBNull(object obj) {
+            return Convert.ToBoolean(getDefaultIfDBNull(obj, TypeCode.Boolean));        
         }
 
         public object getNullFromDate(DateTime valor)

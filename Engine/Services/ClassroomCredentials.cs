@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Engine.Constants;
 using Engine.Interfaces;
 
-namespace Engine.Service
+namespace Engine.Services
 {
     public class ClassroomCredentials : IConectionString
     {

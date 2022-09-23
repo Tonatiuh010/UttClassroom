@@ -9,7 +9,7 @@ namespace Engine.Interfaces.DataCollector
 {
     public interface IGroupStudentsCollector
     {
-        public delegate List<Student> SearchStudents(int groupId);
+        public delegate List<Student>? SearchStudents(int groupId);
 
         public int GroupId { get; set; }
         public SearchStudents? GetStudents { get; }

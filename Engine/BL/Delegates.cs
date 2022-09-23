@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using Engine.BO;
 
 namespace Engine.BL;
@@ -12,4 +13,5 @@ public static class Delegates {
     public delegate object? ActionResult();
     public delegate Result? ActionResult_R();
     public delegate Result CallbackResult(Result  result);
+    public delegate void CallbackReader(IDataReader reader);
 }
