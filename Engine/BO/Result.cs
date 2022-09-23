@@ -37,7 +37,7 @@ namespace Engine.BO {
 
         public InsertStatus()
         {
-            Id = null;
+            Id = 0;
             FromObject = typeof(object);
             InsertDate = DateTime.Now;
         }

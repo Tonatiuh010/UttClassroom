@@ -24,6 +24,6 @@ namespace Engine.Constants {
 
 
         /* Connection Strings */
-        public const string CLASSROOM = "CLASSROOM";
+        public const string CLASSROOM = "DB_CLASSROOM";
     }
 }

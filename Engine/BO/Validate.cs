@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Engine.BO
 {
-    /// <summary>
-    /// Clase de validaciones
-    /// </summary>
     public class Validate
     {
         private static Validate? _instance = null;
         private Validate() { }
-        //Singleton initiation
+
         public static Validate Instance
         {
             get
@@ -22,6 +19,7 @@ namespace Engine.BO
                 return _instance;
             }
         }
+
         #region General Methods
 
         public object getDefaultIfNull(string obj, TypeCode typeCode)
