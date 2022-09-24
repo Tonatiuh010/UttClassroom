@@ -20,11 +20,9 @@ namespace Engine.BL
             MySqlDataBase.OnException = onConnectionError;
         }
 
-      /*  
-        public BaseBL(D.CallbackExceptionMsg onError)
-        {
-            
-        }*/
+        //public BaseBL(D.CallbackExceptionMsg onError)
+        //{
+        //}
 
     }
 }

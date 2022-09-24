@@ -15,15 +15,12 @@ using Engine.Services;
 using MySql.Data.MySqlClient;
 using I = Engine.DAL.Classes;
 using D = Engine.BL.Delegates;
-using Org.BouncyCastle.Crypto.Digests;
-using System.Collections.Specialized;
 
 namespace Engine.DAL
 {
     public class ClassroomDAL : I.DAL
     {
         public delegate void DALCallback(ClassroomDAL dal);
-
 
         public static ClassroomDAL Instance => new(ClassroomCredentials.Instance);        
         private ClassroomDAL(IConectionString? conn) : base(conn) { }
@@ -55,13 +52,13 @@ namespace Engine.DAL
                             Country = new()
                             {
                                 Id = Validate.getDefaultIntIfDBNull(reader["COUNTRY_ID"]),
-                                Name = Validate.getDefaultStringIfDBNull(reader["COUNTRY"])
+                                //Name = Validate.getDefaultStringIfDBNull(reader["COUNTRY"])
                             },
                             City = new ()
                             {
                                 Id = Validate.getDefaultIntIfDBNull(reader["CITY_ID"]),
-                                Name = Validate.getDefaultStringIfDBNull(reader["CITY"])
-                            }
+                                //Name = Validate.getDefaultStringIfDBNull(reader["CITY"])
+                            },
                         },
                         Contact = new Contact()
                         {

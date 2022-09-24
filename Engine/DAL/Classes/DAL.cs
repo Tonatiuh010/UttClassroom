@@ -16,8 +16,10 @@ namespace Engine.DAL.Classes
         protected static readonly Validate Validate = Validate.Instance;        
         public static D.CallbackExceptionMsg? OnDALError { get; set; }
 
-        protected DAL(IConectionString? conn) : base(conn?.ConnectionString) 
-            => OnDALError = null;
+        protected DAL(IConectionString? conn) : base(conn?.ConnectionString)
+        {
+
+        }
 
         protected static void SetExceptionResult(string actionName, string msg, Exception ex) 
             => OnDALError?.Invoke(ex, $"Error on ({actionName}) - {msg}");
