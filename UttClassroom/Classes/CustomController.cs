@@ -12,13 +12,13 @@ namespace Classes;
 
 public abstract class CustomController : ControllerBase
 {
-    //public ExceptionManager Manager => ExceptionManager.Instance;
-
-    public Uri Uri => new($"{Request.Scheme}://{Request.Host}{Request.PathBase}{Request.Path}{Request.QueryString}");
-    public string DomainUrl => $"{Uri.Scheme}://{Uri.Authority}";
-
-    protected D.CallbackExceptionMsg OnMissingProperty => SetErrorOnRequest;
     protected List<RequestError> ErrorsRequest { get; set; } = new List<RequestError>();
+    private ExceptionManager ErrorManager { get; set; }
+
+    public CustomController()
+    {
+        ErrorManager = new (SetErrorOnRequest);
+    }
 
     protected void SetErrorOnRequest(Exception ex, string msg) 
         => ErrorsRequest.Add(new RequestError() {
@@ -85,6 +85,8 @@ public abstract class CustomController : ControllerBase
             ErrorResult(this, result, ex);
         }
 
+        ErrorManager.Dispose();
+
         return result;
     }
 
@@ -114,3 +116,6 @@ public abstract class CustomController : ControllerBase
     }
 
 }
+
+// public Uri Uri => new($"{Request.Scheme}://{Request.Host}{Request.PathBase}{Request.Path}{Request.QueryString}");
+// public string DomainUrl => $"{Uri.Scheme}://{Uri.Authority}";
