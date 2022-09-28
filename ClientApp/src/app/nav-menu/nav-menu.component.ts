@@ -14,4 +14,13 @@ export class NavMenuComponent {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
+  foo():void{
+    alert("Works");
+  }
+  color = "red"
+  err = true
+
+  updateColor() {
+    this.err=!this.err;
+  }
 }
