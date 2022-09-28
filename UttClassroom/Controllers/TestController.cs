@@ -13,6 +13,4 @@ public class TestController : CustomController
     public Result GetStudents() 
         => RequestResponse(() => StudentsBL.GetStudents());
 
-
-
 }
