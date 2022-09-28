@@ -15,6 +15,9 @@ using Engine.Services;
 using MySql.Data.MySqlClient;
 using I = Engine.DAL.Classes;
 using D = Engine.BL.Delegates;
+using Engine.Services.DataCollector;
+using System.Reflection;
+using Engine.Interfaces.DataCollector;
 
 namespace Engine.DAL
 {
@@ -392,5 +395,165 @@ namespace Engine.DAL
             return model;
         }
 
+        public List<Labor> GET_LABOR_STUDENTS(int? id)
+        {
+            List<Labor> model = new();
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_LABOR_STUDENTS, CommandType.StoredProcedure);
+
+                IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
+                cmd.Parameters.Add(CreateParameter("IN_LABOR_STUDENTS", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(pResult);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model.Add(new()
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["LABOR_ID"]),
+                        Department = Validate.getDefaultStringIfDBNull(reader["DEPARTMENT"]),
+                        Business = Validate.getDefaultStringIfDBNull(reader["BUSINESS"]),
+                        Job = Validate.getDefaultStringIfDBNull(reader["JOB"]),
+                        Address = new Address
+                        {
+                           Id = Validate.getDefaultIntIfDBNull(reader["ADDRESS_ID"]),
+                           Street = Validate.getDefaultStringIfDBNull(reader["ADDRESS_STREET"]),
+                           Neighborhood = Validate.getDefaultStringIfDBNull(reader["ADDRESS_NEIGHBORHOOD"])
+                        },
+                        Contact = new Contact
+                        {
+                           Id = Validate.getDefaultIntIfDBNull(reader["CONTACT_ID"]),
+                           Email = Validate.getDefaultStringIfDBNull(reader["CONTACT_ID"]),
+                           Phone = Validate.getDefaultStringIfDBNull(reader["CONTACT_PHONE"])
+                        },
+                        IsStudy = Validate.getDefaultBoolIfDBNull(reader["IS_STUDY"])
+
+                    });
+                }
+
+                reader.Close();
+
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetLabors", msg, ex));
+
+            return model;
+        }
+
+        public List<Location> GET_LOCATION(int? id)
+        {
+            List<Location> model = new();
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_LOCATION, CommandType.StoredProcedure);
+
+                IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
+                cmd.Parameters.Add(CreateParameter("IN_LOCATION", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(pResult);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model.Add(new()
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["LOCATION_ID"]),
+                        Country = new()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["COUNTRY_ID"]),
+                            Code = Validate.getDefaultStringIfDBNull(reader["COUNTRY_CODE"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["COUNTRY"])
+                        },
+                        City = new()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["CITY_ID"]),
+                            Code = Validate.getDefaultStringIfDBNull(reader["CITY_CODE"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["CITY"])
+                        }
+
+                    });
+                }
+
+                reader.Close();
+
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetLocation", msg, ex));
+
+            return model;
+        }
+
+        public List<Major> GET_MAJOR(int? id)
+        {
+            List<Major> model = new();
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_MAJOR, CommandType.StoredProcedure);
+
+                IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
+                cmd.Parameters.Add(CreateParameter("IN_MAJOR", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(pResult);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model.Add(new()
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["MAJOR_ID"]),
+                        Code = Validate.getDefaultStringIfDBNull(reader["MAJOR_CODE"]),
+                        Name = Validate.getDefaultStringIfDBNull(reader["NAME"]),
+                        Level = new()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["LEVEL_ID"]),
+                            Code = Validate.getDefaultStringIfDBNull(reader["LEVEL_CODE"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["LEVEL"])
+                        }
+
+                    });
+                }
+
+                reader.Close();
+
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetMajor", msg, ex));
+
+            return model;
+        }
+
+        public List<Scholarly> GET_SCHOLARLY(int? id)
+        {
+            List<Scholarly> model = new();
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_SCHOLARLY, CommandType.StoredProcedure);
+
+                IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
+                cmd.Parameters.Add(CreateParameter("IN_MAJOR", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(pResult);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model.Add(new()
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["SCHOLARLY_ID"]),
+                        Name = Validate.getDefaultStringIfDBNull(reader["SCHOOL_NAME"]),
+                        Type = new()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["SCH_TYPE_ID"]),
+                            Code = Validate.getDefaultStringIfDBNull(reader["SCH_TYPE_CODE"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["SCH_TYPE"])
+                        },
+                        Address = new Address
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["ADDRESS_ID"]),
+                            Street = Validate.getDefaultStringIfDBNull(reader["ADDRESS_STREET"]),
+                            Neighborhood = Validate.getDefaultStringIfDBNull(reader["ADDRESS_NEIGHBORHOOD"])
+                        }
+
+                    });
+                }
+
+                reader.Close();
+
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetScholarly", msg, ex));
+
+            return model;
+        }
     }
 }

@@ -14,6 +14,11 @@ namespace Engine.Constants {
         public const string GET_FAMILY_CONTACTS = "GET_FAMILY_CONTACTS";
         public const string GET_GROUPS = "GET_GROUPS";
         public const string GET_GROUP_STUDENTS = "GET_GROUP_STUDENTS";
+
+        public const string GET_LABOR_STUDENTS = "GET_LABOR_STUDENTS";
+        public const string GET_LOCATION = "GET_LOCATION";
+        public const string GET_MAJOR = "GET_MAJOR";
+        public const string GET_SCHOLARLY = "GET_SCHOLARLY";
         #endregion
 
 
