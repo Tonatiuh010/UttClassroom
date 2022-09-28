@@ -30,9 +30,9 @@ namespace Engine.BL
 
         private static void CompleteGroup(Group? g)
         {
-            if(g != null && g.IsValid() && g.Period != null && g.Field != null)
+            if(g != null && g.IsValid() && g.Period != null && g.Field != null && g.Major != null)
             {
-                g.Major = null;
+                g.Major = CatalogsBL.GetMajor(g.Major.Id);
                 g.Period = CatalogsBL.GetAsset(g.Period.Id);
                 g.Field = CatalogsBL.GetAsset(g.Field.Id);
             }

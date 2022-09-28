@@ -29,6 +29,18 @@ namespace Engine.BL
         public static List<Contact> GetContacts(int? id = null)
             => Dal.GetContacts(id);
 
+        public static List<Labor> GetLabors(int? id = null)
+            => Dal.GetLabors(id);        
+
+        public static List<Location> GetLocations(int? id = null)
+            => Dal.GetLocations(id);
+
+        public static List<Major> GetMajors(int? id = null)
+            => Dal.GetMajors(id);
+
+        public static List<Scholarly> GetScholars(int? id = null)
+            => Dal.GetScholarls(id);
+
         public static List<ContactFamily> GetContactFamilies(int? id = null)
         {
             var contactFamilies = Dal.GetFamilyContacts(id);
@@ -50,6 +62,18 @@ namespace Engine.BL
 
         public static ContactFamily? GetContactFamily(int id)
             => GetContactFamilies(id: id).FirstOrDefault();
+
+        public static Labor? GetLabor(int id)
+            => GetLabors(id: id).FirstOrDefault();
+
+        public static Location? GetLocation(int id)
+            => GetLocations(id: id).FirstOrDefault();
+
+        public static Major? GetMajor(int id)
+            => GetMajors(id: id).FirstOrDefault();
+
+        public static Scholarly? GetScholarly(int id)
+            => GetScholars(id: id).FirstOrDefault();
 
         public static JArray GetFullAsset()
         {
@@ -73,9 +97,9 @@ namespace Engine.BL
 
         private static void CompleteAddress(Address? a)
         {
-            if(a != null && a.IsValid())
+            if(a != null && a.IsValid() && a.Location != null)
             {
-                a.Location = null;
+                a.Location = GetLocation(a.Location.Id);
             }
         }
 

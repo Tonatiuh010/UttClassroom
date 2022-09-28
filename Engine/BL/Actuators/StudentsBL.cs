@@ -30,14 +30,14 @@ namespace Engine.BL
 
         private static void CompleteStudent(Student? s)
         {
-            if(s != null && s.IsValid() && s.Marital != null && s.Genre != null && s.Address != null)
+            if(s != null && s.IsValid() && s.Marital != null && s.Genre != null && s.Address != null && s.Scholarly != null && s.Labor != null && s.BirthPlace != null)
             {
                 s.Marital = CatalogsBL.GetAsset(s.Marital.Id);
                 s.Genre = CatalogsBL.GetAsset(s.Genre.Id);
                 s.Address = CatalogsBL.GetAddress(s.Address.Id);
-                s.Scholarly = null;
-                s.Labor = null;
-                s.BirthPlace = null;
+                s.Scholarly = CatalogsBL.GetScholarly(s.Scholarly.Id);
+                s.Labor = CatalogsBL.GetLabor(s.Labor.Id);
+                s.BirthPlace = CatalogsBL.GetLocation(s.BirthPlace.Id);
             }
         }
 

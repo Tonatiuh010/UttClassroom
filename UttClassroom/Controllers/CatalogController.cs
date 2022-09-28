@@ -43,6 +43,37 @@ public class CatalogController : CustomController
     public Result GetContactFamily(int id)
         => RequestResponse(() => CatalogsBL.GetContactFamily(id));
 
+    [HttpGet("location")]
+    public Result GetLocations() 
+        => RequestResponse(() => CatalogsBL.GetLocations());
+
+    [HttpGet("location/{id:int}")]
+    public Result GetLocation(int id)
+        => RequestResponse(() => CatalogsBL.GetLocation(id));
+
+    [HttpGet("labor")]
+    public Result GetLabors()
+        => RequestResponse(() => CatalogsBL.GetLabors());
+
+    [HttpGet("labor/{id:int}")]
+    public Result GetLabor(int id)
+        => RequestResponse(() => CatalogsBL.GetLabor(id));
+
+    [HttpGet("major")]
+    public Result GetMajors()
+        => RequestResponse(() => CatalogsBL.GetMajors());
+
+    [HttpGet("major/{id:int}")]
+    public Result GetMajor(int id)
+        => RequestResponse(() => CatalogsBL.GetMajor(id));
+
+    [HttpGet("scholarly")]
+    public Result Getscholarls()
+        => RequestResponse(() => CatalogsBL.GetScholars());
+
+    [HttpGet("scholarly/{id:int}")]
+    public Result GetScholarly(int id)
+        => RequestResponse(() => CatalogsBL.GetScholarly(id));
 
     [HttpGet("full")]
     public Result GetFullAsset()
