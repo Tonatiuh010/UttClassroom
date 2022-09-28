@@ -1,27 +1,37 @@
+using Classes;
+using Engine.BL;
+using Engine.Constants;
+using Engine.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllersWithViews();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.MapGet("/", () => "Classroom API is working...");
 
-// Configure the HTTP request pipeline.
+ClassroomCredentials.ConnectionCallback = () => builder.Configuration.GetConnectionString(C.CLASSROOM);
+BaseBL.SetErrorsCallback(
+    //CustomController.,
+    (ex, msg) => Console.WriteLine($"Error Opening connection {msg} - {ex.Message}")
+);
+BinderBL.Start();
+
 if (!app.Environment.IsDevelopment())
 {
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseHsts();    
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
-
-app.MapFallbackToFile("index.html");;
+    pattern: "{controller}/{action=Index}/{id?}"
+);
 
 app.Run();
