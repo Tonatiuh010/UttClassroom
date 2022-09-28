@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Engine.BL
 {
@@ -12,9 +13,30 @@ namespace Engine.BL
     {        
 
         public static List<Group> GetGroups(int? id = null, string? code = null)
-           => Dal.GetGroups(id, code);
+        {
+            var groups = Dal.GetGroups(id, code);
+
+            foreach (var g in groups)
+                CompleteGroup(g);
+
+            return groups;
+        }
 
         public static Group? GetStudentGroup(int studentId)
             => Dal.GetStudentGroup(studentId);
+
+        public static Group? GetGroup(int id)
+            => GetGroups(id).FirstOrDefault();
+
+        private static void CompleteGroup(Group? g)
+        {
+            if(g != null && g.IsValid() && g.Period != null && g.Field != null)
+            {
+                g.Major = null;
+                g.Period = CatalogsBL.GetAsset(g.Period.Id);
+                g.Field = CatalogsBL.GetAsset(g.Field.Id);
+            }
+        }
+
     }
 }

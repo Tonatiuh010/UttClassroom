@@ -42,6 +42,7 @@ namespace Engine.DAL
                 {
                     model.Add(new() { 
                         Id = Validate.getDefaultIntIfDBNull(reader["STUDENT_ID"]),
+                        Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CODE"]),
                         Name = Validate.getDefaultStringIfDBNull(reader["NAME"]),
                         LastName = Validate.getDefaultStringIfDBNull(reader["LAST_NAME"]),
                         ImageBytes = null,
@@ -104,6 +105,19 @@ namespace Engine.DAL
                                 Id = Validate.getDefaultIntIfDBNull(reader["LABOR_CONTACT"])
                             },
                             IsStudy = Validate.getDefaultBoolIfDBNull(reader["IS_STUDY"])
+                        },
+                        Scholarly = new ()
+                        {
+                            Id = Validate.getDefaultIntIfDBNull(reader["SCHOLARLY_ID"]),
+                            Name = Validate.getDefaultStringIfDBNull(reader["SCHOLARLY_ID"]),
+                            Address = new ()
+                            {
+                                Id = Validate.getDefaultIntIfDBNull(reader["SCHOLARLY_ADDRESS"])
+                            },
+                            Type = new ()
+                            {
+                                Id = Validate.getDefaultIntIfDBNull(reader["SCH_TYPE_ID"])
+                            }
                         }
 
                     });                
@@ -388,6 +402,26 @@ namespace Engine.DAL
                     };
                 }
             });
+
+            return model;
+        }
+
+
+        public List<string> GetAssetKeys()
+        {
+            List<string> model = new();
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_ASSET_QUERY, CommandType.Text);                
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model.Add(new(Validate.getDefaultStringIfDBNull(reader["ATTR1"])));
+                }
+
+                reader.Close();
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetAssetKey", msg, ex));
 
             return model;
         }
