@@ -6,6 +6,7 @@ using Engine.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 app.MapGet("/", () => "Classroom API is working...");
@@ -19,11 +20,14 @@ BinderBL.Start();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseHsts();
+    app.UseHsts();    
 }
 
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllerRoute(
     name: "default",
