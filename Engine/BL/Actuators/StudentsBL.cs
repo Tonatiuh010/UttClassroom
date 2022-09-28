@@ -10,23 +10,24 @@ using Engine.BL;
 namespace Engine.BL
 {
     public class StudentsBL : BaseBL
-    {        
+    {
 
         public static List<Student> GetStudents(int? id = null)
-        {
-            var students = Dal.GetStudents(id);
+            => CompleteStudents(Dal.GetStudents(id));
 
-            foreach(var s in students)
-                CompleteStudent(s);
-
-            return students;
-        }
-
-        public static List<Student> GetGroupStudents(int groupId) 
-            => Dal.GetGroupStudents(groupId);
+        public static List<Student> GetGroupStudents(int groupId)
+            => CompleteStudents(Dal.GetGroupStudents(groupId));
 
         public static Student? GetStudent(int id) 
             => GetStudents(id).FirstOrDefault();
+
+        private static List<Student> CompleteStudents(List<Student> students)
+        {
+            foreach(var s in students)            
+                CompleteStudent(s);            
+
+            return students;
+        }
 
         private static void CompleteStudent(Student? s)
         {

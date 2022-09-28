@@ -571,6 +571,42 @@ namespace Engine.DAL
             return model;
         }
 
+        public List<StudentHistory> GetStudentHistorial(int? id, string? group, string? subGroup)
+        {
+            List<StudentHistory> model = new();
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_STUDENT_HISTORIAL, CommandType.StoredProcedure);
+
+                IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
+                cmd.Parameters.Add(CreateParameter("IN_STUDENT", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(CreateParameter("IN_ATTR1", group, MySqlDbType.String));
+                cmd.Parameters.Add(CreateParameter("IN_ATTR2", subGroup, MySqlDbType.String));
+                cmd.Parameters.Add(pResult);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model.Add(new(Validate.getDefaultIntIfDBNull(reader["STUDENT_ID"]))
+                    {
+                        Id = Validate.getDefaultIntIfDBNull(reader["HISTORY_ID"]),
+                        Group = Validate.getDefaultStringIfDBNull(reader["ATTR1"]),
+                        SubGroup = Validate.getDefaultStringIfDBNull(reader["ATTR2"]),
+                        Value = Validate.getDefaultStringIfDBNull(reader["ATTR3"]),
+                        ValueAlt = Validate.getDefaultStringIfDBNull(reader["ATTR4"]),
+                        ScoreDate = Validate.getDefaultDateIfDBNull(reader["SCORE_DATE"]),
+                        Score = Validate.getDefaultStringIfDBNull(reader["SCORE"])
+
+                    });
+                }
+
+                reader.Close();
+
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetStudentHistorial", msg, ex));
+
+            return model;
+        }
+
         public List<string> GetAssetKeys()
         {
             List<string> model = new();

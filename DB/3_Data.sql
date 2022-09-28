@@ -151,5 +151,137 @@ INSERT INTO GROUP_STUDENT ( GROUP_ID, STUDENT_ID, IS_CURSED, CREATED_BY ) VALUES
 	(1, 1, FALSE, 'ADMIN')
 ;
 
-INSERT INTO GROUP_STUDENT ()
-SELECT ASSET_CODE, NAME, ATTR1 FROM ASSET;
+## Student History
+
+INSERT INTO STUDENT_HISTORY (
+	SCORE, 
+    SCORE_DATE, 
+    ATTR1, 
+    ATTR2, 
+    ATTR3, 
+    ATTR4, 
+    STUDENT_ID, 
+    CREATED_BY
+) VALUES 
+/*########### LOPEZ RAMIREZ KEVIN TONATIUH ####################### */
+(
+	/* NIVEL INGLES */
+	'A1', -- SCORE
+    STR_TO_DATE('06-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'ENGLISH', -- ATTR2
+    NULL, -- ATTR3
+    NULL, -- ATTR4
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* PROMEDIO DE BACHILLERATO */
+	'8.6', -- SCORE
+    STR_TO_DATE('08-08-2019', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'SCHOLARLY', -- ATTR2
+    NULL, -- ATTR3
+    NULL, -- ATTR4
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* PUNTOS EXAMEN DE INGRESO */
+	'872', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'EXAM_ENTRY', -- ATTR2
+    NULL, -- ATTR3
+    NULL, -- ATTR4
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 1 */
+	'9.2', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '1', -- ATTR3 
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 2 */
+	'9.4', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '2', -- ATTR3 
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 3 */
+	'9.0', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '3', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 4 */
+	'8.5', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '4', -- ATTR3 
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 5 */
+	'8.9', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '5', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 6 */
+	'9.0', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '6', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 7 */
+	'8.1', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'ING', -- ATTR1
+    'QUARTER', -- ATTR2
+    '7', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 8 */
+	'8.5', -- SCORE
+    STR_TO_DATE('05-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'ING', -- ATTR1
+    'QUARTER', -- ATTR2
+    '8', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+);
