@@ -60,7 +60,7 @@ VALUES
     /*############################ Speciality ###########################*/
 	('TIDGS', 'Desarrollo y Gestión de Software', 'MAJOR_SPECIALITY', NULL, NULL, 'Desarrollo y Gestión de Software', 'ADMIN'),
     /*############################ PERIOD ###########################*/
-    ('202203', 'Period', 'PERIOD', '09/01/2022', '12/30/2022', 'Period', 'ADMIN')
+    ('202203', '09/01/2022 - 12/30/2022', 'PERIOD', '09/01/2022', '12/30/2022', '09/01/2022 - 12/30/2022', 'ADMIN')
 ;
 
 ## Location 

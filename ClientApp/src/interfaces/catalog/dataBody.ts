@@ -5,4 +5,5 @@ export interface dataBody {
   data2?: any;
   data3?: any;
   data4?: any;
+  //isValid: () => boolean;
 }

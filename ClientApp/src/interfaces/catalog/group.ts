@@ -1,5 +1,6 @@
 import { Asset } from "./asset";
 import { Major } from "./major";
+import { Student } from "./student";
 
 export interface Group {
   code: string;
@@ -9,6 +10,6 @@ export interface Group {
   major: Major;
   field: Asset;
   period: Asset;
-  students: any[];
+  students?: Student[];
   id: number;
 }

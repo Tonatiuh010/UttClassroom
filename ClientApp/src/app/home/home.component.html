@@ -1,17 +1,19 @@
-<div class="container pt-2 pb-4 px-10 border">
+<div *ngIf="group" class="container pt-2 pb-4 px-10 border">
 
   <div class="w-full bg-white border rounded drop-shadow-md mt-4">
     <div class="text-4xl font-medium text-center py-2 border-bottom w-full">
-      9A - Ingenieria
+      {{group.quarter + group.key}} - {{ group.major.name }}
+      <!-- {{ group.major.level.name }} -->
     </div>
 
     <div class="grid sm:grid-cols-2 grid-cols-1 mt-2 w-full p-2">
       <div class="sm:text-lg text-sm sm:text-left text-center font-medium">
-        Ingenieria en Desarrollo de Software Multiplataforma
+        <!-- {{group.major.name}} -->
+        {{group.field.name}}
       </div>
-      <div class="sm:text-lg text-sm sm:text-left text-center text-left">
+      <div class="sm:text-lg text-sm sm:text-left text-center">
         <label class="font-medium"> Periodo: </label>
-        20/01/2022 - 20/04/2022
+        {{ group.period.name }}
       </div>
     </div>
   </div>
@@ -36,13 +38,13 @@
     </div>
 
 
-    <div class="w-full ">
+    <div *ngIf="group.students" class="w-full">
       <div class="bg-white border rounded p-3 drop-shadow-md">
         <div class="text-md font-semibold text-center w-full">
           Lista Alumnos
         </div>
 
-        <table class="table table-fixed my-2 sm:text-md text-sm">
+        <table class="table table-auto my-2 sm:text-md text-sm">
           <thead>
             <tr>
               <th> # </th>
@@ -50,11 +52,11 @@
               <th> Matricula </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngFor="let student of group.students" >
             <tr>
               <td>@</td>
-              <td>Tonatiuh Lopez</td>
-              <td>0319125293</td>
+              <td> {{ student.name }} {{ student.lastName }} </td>
+              <td> {{ student.code }} </td>
             </tr>
           </tbody>
         </table>

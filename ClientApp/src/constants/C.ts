@@ -1,3 +1,8 @@
 export const C = {
-  API_URL: 'https://localhost:44327/' //'http://localhost:90/',
+  API_URL: 'http://localhost:90/api/',//'https://localhost:44327/api/', //
+  keyword: {
+    OK: 'OK',
+    COMPLETE: 'COMPLETE',
+    ERROR: 'ERROR'
+  }
 }
