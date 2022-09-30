@@ -16,19 +16,21 @@
         [ngClass]="{ show: isExpanded }">
         <ul class="flex-grow navbar-nav">
           <li>
-            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 px-5 mr-1" [routerLink]="['/']">Home</a>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 px-5 mr-1" [routerLink]="['/']">
+              Group
+            </a>
           </li>
           <li>
-            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 px-5 mr-1" [routerLink]="['/counter']"
-              >Counter</a>
+            <a class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 px-5 mr-1" [routerLink]="['/counter']">
+              Student
+            </a>
           </li>
-          <li>
+          <!-- <li>
             <a (click)="foo()" class="font-sans text-lg  font-semibold text-black nav-link bg-gray-200 focus:bg-gray-50 px-5 mr-1" [routerLink]="['/fetch-data']"
               >Fetch data</a>
-          </li>
-          <button (click)="foo()">Click</button>
-          
-          <button (click)="updateColor()" [style.color]="color">Update color</button>
+          </li> -->
+          <!-- <button (click)="foo()">Click</button> -->
+          <!-- <button (click)="updateColor()" [style.color]="color">Update color</button> -->
         </ul>
       </div>
     </div>

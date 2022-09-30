@@ -1,15 +1,69 @@
-<div class="bg-gray-50">
-    <div class="container py-5 px-10 ">
-        <div>
-            <div class="p-2 font-sans text-lg font-semibold border-2">
-                <h1 class="align-middle">1</h1>
-                <highcharts-chart
-                  [Highcharts]="Highcharts"
-                  [options]="linechart"
-                  style="width: 100%; height: 400px; display: block;"
-                >
-                </highcharts-chart>
-            </div>
-        </div>
+<div class="container pt-2 pb-4 px-10 border">
+
+  <div class="w-full bg-white border rounded drop-shadow-md mt-4">
+    <div class="text-4xl font-medium text-center py-2 border-bottom w-full">
+      9A - Ingenieria
     </div>
+
+    <div class="grid sm:grid-cols-2 grid-cols-1 mt-2 w-full p-2">
+      <div class="sm:text-lg text-sm sm:text-left text-center font-medium">
+        Ingenieria en Desarrollo de Software Multiplataforma
+      </div>
+      <div class="sm:text-lg text-sm sm:text-left text-center text-left">
+        <label class="font-medium"> Periodo: </label>
+        20/01/2022 - 20/04/2022
+      </div>
+    </div>
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-2 grid-cols-1 mt-4 w-full">
+    <div class="w-full">
+      <div class="grid sm:grid-cols-2 grid-cols-1 gap-2 mb-3">
+        <div class="container-sm text-center text-4xl font-semibold border rounded w-full p-1 bg-white drop-shadow-md">
+          <p class="text-sm">
+            Alumnos
+          </p>
+          45
+        </div>
+        <div class="container-sm text-center text-4xl font-semibold border rounded w-full p-1 bg-white drop-shadow-md">
+          <p class="text-sm">
+            Promedio
+          </p>
+          9.0
+        </div>
+      </div>
+      <div class="border drop-shadow-md" [chart]="chart"></div>
+    </div>
+
+
+    <div class="w-full ">
+      <div class="bg-white border rounded p-3 drop-shadow-md">
+        <div class="text-md font-semibold text-center w-full">
+          Lista Alumnos
+        </div>
+
+        <table class="table table-fixed my-2 sm:text-md text-sm">
+          <thead>
+            <tr>
+              <th> # </th>
+              <th> Nombre </th>
+              <th> Matricula </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@</td>
+              <td>Tonatiuh Lopez</td>
+              <td>0319125293</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="p-2 font-sans text-lg font-semibold border-2">
+    <div [chart]="chart"></div>
+  </div> -->
 </div>
+
