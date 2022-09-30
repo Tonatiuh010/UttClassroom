@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BaseService as service } from './base-service.service';
+import { C } from '../../constants/C';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
+  private service : service
 
-  private API_ALUMNOS = "https://rickandmortyapi.com/api/character"
-
-  constructor(private http: HttpClient) { }
+  constructor(private http : HttpClient) {
+    this.service = new service(C.API_URL, http);
+  }
 
   public getAllAlumnos(): Observable<any>{
-    return this.http.get(this.API_ALUMNOS);
+    return this.service.getData();
   }
 }
