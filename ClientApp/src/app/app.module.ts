@@ -9,7 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CardBoxComponent } from './card-box/card-box.component';
 import { AlumnoComponent } from "./alumno/alumno.component";
@@ -21,7 +20,6 @@ import { AlumnoComponent } from "./alumno/alumno.component";
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     FetchDataComponent,
     CardBoxComponent,
     AlumnoComponent
