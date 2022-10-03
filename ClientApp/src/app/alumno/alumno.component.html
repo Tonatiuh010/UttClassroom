@@ -1,23 +1,23 @@
 <div class="bg-gray-50">
-  <div class="container">
-    <div class="p-2 grid sm:grid-cols-4 grid-cols-1 sm:gap-4">
-      <div class="p-4 font-sans text-lg font-semibold w-full h-full grid-rows-2 gap-4 shadow-md">
+  <div class="container  break-words">
+    <div class="p-2 grid xl:grid-cols-4 grid-cols-1 sm:gap-4">
+      <div class="p-4 font-sans text-lg  w-full h-full grid-rows-2 gap-4 shadow-md">
         <div class="flex justify-center">
           <img class="rounded-t-sm w-60" src="./assets/img/avatar.jpg" alt="avatar">
         </div>
-        <div class="mt-4 p-2 font-sans text-center text-2xl font-semibold shadow-md rounded-md">
+        <div class="mt-4 p-2 font-sans text-center text-xl  shadow-md rounded-md">
           <p class="mx-6" id="birthStudent">21 años</p>
         </div>
         <div class="mt-4">
           <div>
-            <div class="mt-4 p-2 font-sans text-2xl font-semibold shadow-md rounded-md text-right">
-              <p class="p-2 text-center text-3xl">Contactos</p>
-              <div class="p-2" id="contact1">
+            <div class="mt-4 p-2 font-sans text-xl shadow-md rounded-md  text-center">
+              <p class="text-center text-2xl">Contactos</p>
+              <div class="" id="contact1">
                 <p class="p-1" id="nameContact">Trinidad Vargas</p>
-                <div class="sm:text-lg text-base text-gray-500">
+                <div class="text-base text-gray-500">
                   <p class="p-1" id="contactEmail1">bonitatrini@hotmail.com</p>
                   <p class="p-1" id="contactEmail2" name="NULL"></p>
-                  <div class="grid grid-cols-2">
+                  <div class="grid 2xl:grid-cols-2 grid-cols-1">
                     <p class="p-1" id="contactPhone2" name="NULL"></p>
                     <p class="p-1" id="contactPhone1">+5574740445</p>
                   </div>
@@ -25,21 +25,21 @@
               </div>
               <div class="p-2" id="contact2">
                 <p class="p-1" id="nameContact">Mario Avila</p>
-                <div class="sm:text-lg text-base text-gray-500">
+                <div class="text-base text-gray-500">
                   <p class="p-1" id="contactEmail1">bonitatrini@hotmail.com</p>
                   <p class="p-1" id="contactEmail2" name="NULL">martinmarcosavila@gmail.com</p>
-                  <div class="grid sm:grid-cols-2">
+                  <div class="grid 2xl:grid-cols-2 grid-cols-1">
                     <p class="p-1" id="contactPhone2" name="NULL">+5574740445</p>
                     <p class="p-1" id="contactPhone1">+526641641574</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="mt-4 p-2 font-sans text-2xl font-semibold shadow-md rounded-md text-right">
-              <p class="p-2 text-center text-3xl">Trabajo</p>
-              <div class="p-2" id="job">
+            <div class="mt-4 p-2 font-sans text-xl  shadow-md rounded-md text-center">
+              <p class="p-1 text-center text-2xl">Trabajo</p>
+              <div class="" id="job">
                 <p class="p-1" id="nameBusiness">Foxconn BC S.A</p>
-                <div class="sm:text-lg text-base text-gray-500">
+                <div class="text-base text-gray-500">
                   <p class="p-1" id="nameJob">SOFTWARE DEVELOPER</p>
                   <p class="p-1" id="contactJobEmail">foxconn.RH@foxconn.com</p>
                   <div class="">
@@ -51,7 +51,7 @@
           </div>
         </div>
       </div>
-      <div class="p-4 font-sans text-2xl font-semibold shadow-md rounded-md col-span-3" id="studentSection">
+      <div class="p-4 font-sans text-xl shadow-md rounded-md col-span-3" id="studentSection">
         <div class="align-middle">
           <p class="p-2 font-sans shadow-md rounded-md text-center normal-case" id="studentName">Kevin Tonathiu Lopes Ramirez</p>
         </div>
@@ -62,10 +62,10 @@
           <div class="p-2 font-sans shadow-md rounded-md text-center normal-case">
             <p class="text-center" id="groupQuarter">9 Cuatrimestre </p>
           </div>
-          <div class="p-2 font-sans font-semibold shadow-md rounded-md text-center normal-case col-span-2">
+          <div class="p-2 font-sans  shadow-md rounded-md text-center normal-case col-span-2">
             <p class="text-center" id="majorName">Ingeniería en Tecnologías de la Información</p>
           </div>
-          <div class="p-2 font-sans font-normal col-span-2 text-3xl">
+          <div class="p-2 font-sans font-normal col-span-2 sm:text-2xl text-xl">
             <p class="text-center">Datos detallados del alumno</p>
           </div>
           <!--Imputs-->
@@ -89,13 +89,52 @@
             <option value="EC-SLT" id="EC-SLT">Soltero(a)</option>
             <option value="EC-UL" id="EC-UL">Unión Libre</option>
           </select>
-          <div class="p-2 font-sans shadow-md rounded-md text-center normal-case grid grid-cols-3" id="studentAddress">
-            <p class="" id="El Mirador">El Mirador</p>
-            <p class="" id="studentStreet">Chula Vista</p>
-            <p class="" id="studentNumberAddress">#413</p>
+          <div class="p-2 font-sans shadow-md rounded-md text-center normal-case grid sm:grid-cols-3 grid-cols-1" id="studentAddress">
+            <div class="grid grid-rows-2 text-center">
+              <p class="">Colonia:</p>
+              <p class="text-gray-500" id="El Mirador">El Mirador</p>
+            </div>
+            <div class="grid grid-rows-2 text-center">
+              <p class="">Calle:</p>
+              <p class="text-gray-500" id="studentStreet">Chula Vista</p>
+            </div>
+            <div class="grid grid-rows-2 text-center">
+              <p class="">Numero:</p>
+              <p class="text-gray-500" id="studentNumberAddress">#413</p>
+            </div>
           </div>
-          <div class="p-2 font-sans shadow-md rounded-md text-center normal-case">
-            <p class="p-1" id="nameContact">Mario Avila</p>
+          <div class="p-2 bg-gray-50 font-sans shadow-md rounded-md text-center " id="placeBorn">
+            <p class="" id="nameContact">Trinidad Vargas</p>
+            <p class="text-gray-500" id="contactEmail1">bonitatrini@hotmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modificar los URL-->
+    <div>
+      <div class="p-2 sm:text-2xl text-xl bg-gray-50 font-sans font-normal shadow-md rounded-md text-center " id="placeBorn">
+        <p>Calificaciones del alumno</p>
+      </div>
+      <div class="text-center m-4 p-2 sm:text-xl text-xl bg-gray-50 font-sans font-normal shadow-md rounded-md">
+        <div class="p-4">Grados cuatrimestrales</div>
+        <div class="grid grid-cols-2">
+          <a href="http://localhost:4200/alumno">
+            <button class="">
+            1
+            </button>
+          </a>
+          <a href="http://localhost:4200/alumno">
+            <button class="">
+            1
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="m-2 p-2 sm:text-xl text-xl bg-gray-50 font-sans font-normal shadow-md rounded-md text-center grid xl:grid-cols-4 grid-cols-1 sm:gap-4" id="placeBorn">
+        <div class="shadow-md grid grid-rows-2 p-4">
+          <p>Promedio General</p>
+          <div class="text-7xl">
+            <p id="avarageGeneral">8.9</p>
           </div>
         </div>
       </div>
