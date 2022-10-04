@@ -10,7 +10,7 @@ namespace Engine.BO
     public class ItemStats
     {
         public string Name { get; set; }
-        public object Value { get; set; }        
+        public object? Value { get; set; }        
         
         public ItemStats(string name, object value)
         {
@@ -22,7 +22,8 @@ namespace Engine.BO
         {
             try
             {
-                return (T)Value;
+                return default;
+                // return (T)Value;
             }
             catch
             {

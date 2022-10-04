@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,12 @@ namespace Engine.BO
         public StudentHistory(int studentId)
         {
             StudentId = studentId;
-            Score = 0;
+            Score = String.Empty;
         }
 
         public StudentHistory()
         {
-            Score = 0;
+            Score = String.Empty;
             ScoreDate = null;
             Group = null;
             SubGroup = null;
@@ -32,21 +33,21 @@ namespace Engine.BO
         }
 
         private int StudentId { get; set; }
-        public object Score { get; set; }
+        public string Score { get; set; }
         public DateTime? ScoreDate { get; set; }
         public string? Group { get; set; }
         public string? SubGroup { get; set; }
         public string? Value { get; set; }
         public string? ValueAlt { get; set; }
 
-        public T? GetScore<T>()
+        public double GetScore()
         {
             try
             {                
-                return (T)Score;
+                return double.Parse(Score);
             } catch
             {
-                return default;
+                return 0;
             }
         }
 
