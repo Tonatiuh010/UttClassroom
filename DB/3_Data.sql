@@ -60,7 +60,7 @@ VALUES
     /*############################ Speciality ###########################*/
 	('TIDGS', 'Desarrollo y Gestión de Software', 'MAJOR_SPECIALITY', NULL, NULL, 'Desarrollo y Gestión de Software', 'ADMIN'),
     /*############################ PERIOD ###########################*/
-    ('202203', 'Period', 'PERIOD', '09/01/2022', '12/30/2022', 'Period', 'ADMIN')
+    ('202203', '09/01/2022 - 12/30/2022', 'PERIOD', '09/01/2022', '12/30/2022', '09/01/2022 - 12/30/2022', 'ADMIN')
 ;
 
 ## Location 
@@ -70,7 +70,6 @@ INSERT INTO LOCATION (COUNTRY_ID, CITY, CITY_ID, CREATED_BY) VALUES
 	(GET_ASSET('BC'), 'Rosarito',  GET_ASSET('MN-RST'), 'ADMIN'),
     (GET_ASSET('SIN'), 'Mazatlán',  GET_ASSET('MN-MZN'), 'ADMIN')
 ;
-
 ## Address 
 INSERT INTO ADDRESS ( STREET, NUMBER, NEIGHBORHOOD, LOCATION_ID, CREATED_BY ) VALUES 
 	/*############################ Viviendas - Alumnos - Familiares ###########################*/
@@ -78,18 +77,22 @@ INSERT INTO ADDRESS ( STREET, NUMBER, NEIGHBORHOOD, LOCATION_ID, CREATED_BY ) VA
     ('Chula Vista', '413', 'El Mirador', 1, 'ADMIN'),    
     ('Blvd. Bellas Artes', '19842', 'Otay', 1, 'ADMIN'),
     ('Priv. Salvia', '17', 'Delicias', 1, 'ADMIN'),
+	('Calle Napoles','338','Villa del Real', 1,'ADMIN'),
     /*############################ Escuelas ###########################*/
     ('Av. Alejandro Von Humboldt Sn', 'NA', 'Nueva Tijuana', 1, 'ADMIN'),
     ('Blvd. Fuentes', 'NA', 'Florido', 1, 'ADMIN'),
+    ('Del Sol', '23772', 'Villa del Sol', 1, 'ADMIN'),
 	/*############################ Empresas ###########################*/
     ('Calle Laguna Maynar', '1022033', 'CETYS', 1, 'ADMIN'),
     ('Calle Chihuahua', '340', 'El Volado', 1, 'ADMIN')
 ;
+select * from address;
 
 ## SCHOLARLY
 INSERT INTO SCHOLARLY (SCHOOL_NAME, SCH_TYPE_ID, ADDRESS_ID, CREATED_BY) VALUES
 	('CBTIs 116', GET_ASSET('TB-PBL'), 5, 'ADMIN'),
-    ('CECyTE Florido', GET_ASSET('TB-PBL'), 6, 'ADMIN')
+    ('CECyTE Florido', GET_ASSET('TB-PBL'), 6, 'ADMIN'),
+    ('CECyTE Villa del Sol', GET_ASSET('TB-PBL'), 7,'ADMIN')
 ;
 
 ## MAJOR 
@@ -107,9 +110,11 @@ INSERT INTO GROUP_CLASS (GROUP_CODE, GROUP_KEY, QUARTER, MAJOR_ID, FIELD_ID, PER
 INSERT INTO CONTACT (EMAIL1, EMAIL2, PHONE1, PHONE2, DESCRIPTION, CREATED_BY) VALUES 
 	/*############################ Alumnos ###########################*/
 	('l.tonatiuh010@gmail.com', NULL, '+526631226015', NULL, 'Contacto Tonatiuh Lopez - ALUMNO (0319125293)', 'ADMIN'),
+    ('martinmarcosavila@gmail.com', NULL,'+526641641574',NULL,'Contacto Marcos Avila - ALUMNO (0319125260)', 'ADMIN'),
 	/*############################ Alumnos Familiares ###########################*/
     ('aleh.rod@hotmail.com', NULL, '+526641225889', NULL, 'Contacto Familiar - ALUMNO (0319125293)', 'ADMIN'),
     ('ana.ramirez@hotmail.com', NULL, '+526647889622', NULL, 'Contacto Familiar - ALUMNO (0319125293)', 'ADMIN'),
+    ('bonitatrini@hotmail.com', NULL,'+5574740445',NULL,'Contacto Familiar - ALUMNO (0319125260)', 'ADMIN'),
     /*############################ Empresas ###########################*/
     ('Exela.RH@exelaonline.com', NULL, '+018009055300', NULL, 'Contacto Empresa - Labor (1)', 'ADMIN'),
     ('foxconn.RH@foxconn.com', NULL, '+0170069963344', NULL, 'Contacto Empresa - Labor (2)', 'ADMIN')    
@@ -121,6 +126,7 @@ INSERT INTO LABOR_STUDENT ( DEPARTMENT, BUSINESS, JOB, ADDRESS_ID, CONTACT_ID, I
 ;
 
 ## Student
+select * from student;
 INSERT INTO STUDENT ( STUDENT_CODE, NAME, LAST_NAME, IMAGE, BIRTH, BIRTH_LOCATION, GENRE_ID, 
 					  MARITAL_ID, CONTACT_ID, ADDRESS_ID, SCHOLARLY_ID, LABOR_ID, CREATED_BY ) VALUES
 	(
@@ -137,18 +143,36 @@ INSERT INTO STUDENT ( STUDENT_CODE, NAME, LAST_NAME, IMAGE, BIRTH, BIRTH_LOCATIO
         2, ## ESTUDIOS
         1, ## TRABAJO
         'ADMIN' ## CREADO POR (DATOS DE AUDITORIA)
+    ),
+    (
+		'0319125260', ## MATRICULA
+		'MARCOS MARTIN', ## NOMBRE 
+		'AVILA VARGAS', ## APELLIDO
+		NULL, ## IMAGEN (BYTES)
+		STR_TO_DATE('12-18-2000', '%m-%d-%Y'), ## NACIMIENTO
+		1, ## LUGAR DE NACIMIENTO
+		GET_ASSET('GN-M'), ## GENERO
+        GET_ASSET('EC-SLT'), ## ESTADO CIVIL
+        2, ## CONTACTO
+        5, ## DIRECCION
+        2, ## ESTUDIOS
+        NULL, ## TRABAJO
+        'ADMIN' ## CREADO POR (DATOS DE AUDITORIA)
     )
 ;
+select * from contact;
 
 ## Contact Family
 INSERT INTO CONTACT_FAMILY (NAME, KINSHIP, WORK, IS_EMERGENCY, CONTACT_ID, STUDENT_ID, CREATED_BY) VALUES
-	('Alejandra Ramirez', 'Hermana', 'Sales Manager', TRUE, 2, 1, 'ADMIN'),
-	('Ana Ramirez', 'Madre', 'Sastre', TRUE, 3, 1, 'ADMIN')
+	('Alejandra Ramirez', 'Hermana', 'Sales Manager', TRUE, 3, 1, 'ADMIN'),
+	('Ana Ramirez', 'Madre', 'Sastre', TRUE, 4, 1, 'ADMIN'),
+    ('Trinidad Vargas', 'Madre', 'Property developer', TRUE, 5, 2, 'ADMIN')
 ;
 
 ## Group Student
 INSERT INTO GROUP_STUDENT ( GROUP_ID, STUDENT_ID, IS_CURSED, CREATED_BY ) VALUES 
-	(1, 1, FALSE, 'ADMIN')
+	(1, 1, FALSE, 'ADMIN'),
+    (1, 2, FALSE, 'ADMIN')
 ;
 
 ## Student History
@@ -283,5 +307,127 @@ INSERT INTO STUDENT_HISTORY (
     '8', -- ATTR3
     NULL, -- ATTR4 (INICIO DE PERIODO)
     1, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+/*########### AVILA VARGAS MARCOS MARTIN ####################### */
+(
+	/* NIVEL INGLES */
+	'A1', -- SCORE
+    STR_TO_DATE('06-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'ENGLISH', -- ATTR2
+    NULL, -- ATTR3
+    NULL, -- ATTR4
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* PROMEDIO DE BACHILLERATO */
+	'8.8', -- SCORE
+    STR_TO_DATE('08-26-2019', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'SCHOLARLY', -- ATTR2
+    NULL, -- ATTR3
+    NULL, -- ATTR4
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* PUNTOS EXAMEN DE INGRESO */
+	'826', -- SCORE
+    STR_TO_DATE('08-20-2019', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'EXAM_ENTRY', -- ATTR2
+    NULL, -- ATTR3
+    NULL, -- ATTR4
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 1 */
+	'8.8', -- SCORE
+    STR_TO_DATE('04-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '1', -- ATTR3 
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 2 */
+	'9.1', -- SCORE
+    STR_TO_DATE('08-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '2', -- ATTR3 
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 3 */
+	'9.3', -- SCORE
+    STR_TO_DATE('12-15-2020', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '3', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 4 */
+	'9.25', -- SCORE
+    STR_TO_DATE('04-15-2021', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '4', -- ATTR3 
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 5 */
+	'8.7', -- SCORE
+    STR_TO_DATE('08-15-2021', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '5', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 6 */
+	'8.0', -- SCORE
+    STR_TO_DATE('12-15-2021', '%m-%d-%Y'), -- SCORE DATE
+    'TSU', -- ATTR1
+    'QUARTER', -- ATTR2
+    '6', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 7 */
+	'9.1', -- SCORE
+    STR_TO_DATE('04-15-2022', '%m-%d-%Y'), -- SCORE DATE
+    'ING', -- ATTR1
+    'QUARTER', -- ATTR2
+    '7', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID,
+    'ADMIN' -- CREATED BY        
+),
+(
+	/* QUATRIMESTRE 8 */
+	'8.3', -- SCORE
+    STR_TO_DATE('08-15-2022', '%m-%d-%Y'), -- SCORE DATE
+    'ING', -- ATTR1
+    'QUARTER', -- ATTR2
+    '8', -- ATTR3
+    NULL, -- ATTR4 (INICIO DE PERIODO)
+    2, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 );

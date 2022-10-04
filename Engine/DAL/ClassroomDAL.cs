@@ -48,7 +48,7 @@ namespace Engine.DAL
                         Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CODE"]),
                         Name = Validate.getDefaultStringIfDBNull(reader["NAME"]),
                         LastName = Validate.getDefaultStringIfDBNull(reader["LAST_NAME"]),
-                        ImageBytes = null,
+                        Image = Validate.getDefaultBytesIfDBNull(null),
                         Birth = Validate.getDefaultDateIfDBNull(reader["BIRTH"]),
                         BirthPlace = new ()
                         {
@@ -375,7 +375,7 @@ namespace Engine.DAL
                     model.Add(new()
                     {
                         Id = Validate.getDefaultIntIfDBNull(reader["STUDENT_ID"]),
-                        Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CDOE"]),
+                        Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CODE"]),
                         Name = Validate.getDefaultStringIfDBNull(reader["STUDENT_NAME"]),
                         LastName = Validate.getDefaultStringIfDBNull(reader["STUDENT_LAST_NAME"]),
                         Birth = Validate.getDefaultDateIfDBNull(reader["STUDENT_BIRTH"])

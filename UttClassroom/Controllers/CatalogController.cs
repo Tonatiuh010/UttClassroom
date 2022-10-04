@@ -4,7 +4,11 @@ using Engine.BO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Org.BouncyCastle.Asn1.Crmf;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Web.Http.Results;
+using UttClassroom.Classes;
 
 namespace UttClassroom.Controllers;
 
@@ -77,13 +81,7 @@ public class CatalogController : CustomController
         => RequestResponse(() => CatalogsBL.GetScholarly(id));
 
     [HttpGet("full")]
-    public Result GetFullAsset()
-        => RequestResponse(() => {
-            var assets = CatalogsBL.GetFullAsset();
-            //var serJ = JsonSerializer.Serialize();
-            //var obj2 = JsonSerializer.Deserialize<object>(assets.ToString());
-            var obj = assets.ToObject<object>();
-            return obj;
-        });
+    public Result GetFullAsset1()
+        => RequestResponse(() => CatalogsBL.GetFullAsset());
 
 }

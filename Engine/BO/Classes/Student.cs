@@ -14,7 +14,7 @@ namespace Engine.BO
         public string? LastName { get; set; }
 
         [JsonIgnore]
-        public byte[]? ImageBytes { get; set; }
+        public byte[]? Image { get; set; }
 
         public DateTime? Birth { get; set; }
 

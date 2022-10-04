@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace Engine.BO
 {
     public class AssetGroup
-    {
-        [JsonPropertyName("Group")]
+    {        
         public string Name { get; set; }
         public List<Asset> Assets { get; set; }
         
@@ -17,6 +16,13 @@ namespace Engine.BO
         {
             Name = name;
             Assets = assets;
+        }
+
+
+        public object ToObject()
+        {
+            object obj = new object();
+            return obj;
         }
 
     }

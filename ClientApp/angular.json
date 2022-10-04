@@ -129,5 +129,7 @@
       }
     }
   },
-  "defaultProject": "UttClassroom"
+  "cli": {
+    "analytics": "33a5d7df-1ed0-4d77-aa4d-851b0a37ff7f"
+  }
 }

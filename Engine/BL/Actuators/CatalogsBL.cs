@@ -1,6 +1,8 @@
 ﻿using Engine.BO;
 using Engine.DAL;
-using Newtonsoft.Json.Linq;
+using Google.Protobuf.WellKnownTypes;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,22 +77,24 @@ namespace Engine.BL
         public static Scholarly? GetScholarly(int id)
             => GetScholars(id: id).FirstOrDefault();
 
-        public static JArray GetFullAsset()
+        public static JsonArray GetFullAsset()
         {
-            var keys = Dal.GetAssetKeys();            
-            JArray list = new();
+            var keys = Dal.GetAssetKeys();
+            JsonArray list = new();
 
-            foreach(var k in keys)
-            {                
+            foreach (var k in keys)
+            {
                 var assets = GetAssets(group: k);
 
                 if (assets != null && assets.Count > 0)
-                    list.Add(new JObject()
+                {
+                    var json = JsonSerializer.Serialize(assets);
+                    list.Add(new JsonObject()
                     {
-                        [k] = JToken.FromObject(assets)
+                        [k] = JsonNode.Parse( json )
                     });
+                }
             }
-            
 
             return list;
         }

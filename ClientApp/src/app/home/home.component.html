@@ -1,9 +1,84 @@
-<div class="bg-gray-50">
-    <div class="container py-5 px-10 ">
-        <div>
-            <div class="p-2 font-sans text-lg font-semibold border-2">
-                <h1 class="align-middle">1</h1>
-            </div>
-        </div>
+<div *ngIf="group" class="container pt-2 pb-4 px-10 border">
+
+  <div class="w-full bg-white border rounded drop-shadow-md mt-4">
+    <div class="text-4xl font-medium text-center py-2 border-bottom w-full">
+      {{group.quarter + group.key}} - {{ group.major.name }}
+      <!-- {{ group.major.level.name }} -->
     </div>
+
+    <div class="grid sm:grid-cols-2 grid-cols-1 mt-2 w-full p-2">
+      <div class="sm:text-lg text-sm sm:text-left text-center font-medium">
+        <!-- {{group.major.name}} -->
+        {{group.field.name}}
+      </div>
+      <div class="sm:text-lg text-sm sm:text-left text-center">
+        <label class="font-medium"> Periodo: </label>
+        {{ group.period.name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-2 grid-cols-1 mt-4 w-full">
+    <div class="w-full">
+      <div class="grid sm:grid-cols-2 grid-cols-1 gap-2 mb-3">
+        <div class="container-sm text-center text-4xl font-semibold border rounded w-full p-1 bg-white drop-shadow-md">
+          <p class="text-sm">
+            Alumnos
+          </p>
+          45
+        </div>
+        <div class="container-sm text-center text-4xl font-semibold border rounded w-full p-1 bg-white drop-shadow-md">
+          <p class="text-sm">
+            Promedio
+          </p>
+          9.0
+        </div>
+      </div>
+      <div class="border drop-shadow-md" [chart]="chart"></div>
+    </div>
+
+
+    <div *ngIf="group.students" class="w-full">
+      <div class="bg-white border rounded p-3 drop-shadow-md">
+        <div class="text-md font-semibold text-center w-full">
+          Lista Alumnos
+        </div>
+
+        <table class="table table-auto my-2 sm:text-md text-sm">
+          <thead>
+            <tr>
+              <th> # </th>
+              <th> Nombre </th>
+              <th> Matricula </th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let student of group.students" >
+            <tr>
+              <td>@</td>
+              <td> {{ student.name }} {{ student.lastName }} </td>
+              <td> {{ student.code }} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="p-2 font-sans text-lg font-semibold border-2">
+    <div [chart]="chart"></div>
+  </div> -->
 </div>
+
+<!-- <div class="font-sans text-lg font-semibold border-2">
+  <h1 class="align-middle font-semibold bg-blue-200 p-2">Graficas de calificaciones</h1>
+  <div class="flex flex-nowrap">
+    <div class="box-border h-80 w-1/2 border-4 ">
+      <img class="w-full h-full" src='./assets/img/a_04_04_grafico1.JPG' alt='graphic'>
+    </div>
+    <div class="flex flex-col p-2">
+      <div class="pb-2">Calificacion de examen ingreso</div>
+      <div class="pb-2">Nivel de ingles</div>
+      <div class="pb-2">Promedio general de calificaciones</div>
+    </div>
+  </div>
+</div> -->

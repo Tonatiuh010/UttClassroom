@@ -16,7 +16,21 @@ namespace Engine.BL
             => CompleteStudents(Dal.GetStudents(id));
 
         public static List<Student> GetGroupStudents(int groupId)
-            => CompleteStudents(Dal.GetGroupStudents(groupId));
+        {
+            var students = Dal.GetGroupStudents(groupId);
+
+            for(int i = 0; i < students.Count; i++)
+            {
+                var s = students[i];
+                if (s.IsValid() && s != null)
+                {
+                    s = GetStudent(s.Id);
+                    CompleteStudent(s);
+                }                    
+            }                
+
+            return students;
+        }            
 
         public static Student? GetStudent(int id) 
             => GetStudents(id).FirstOrDefault();
@@ -38,7 +52,7 @@ namespace Engine.BL
                 s.Address = CatalogsBL.GetAddress(s.Address.Id);
                 s.Scholarly = CatalogsBL.GetScholarly(s.Scholarly.Id);
                 s.Labor = CatalogsBL.GetLabor(s.Labor.Id);
-                s.BirthPlace = CatalogsBL.GetLocation(s.BirthPlace.Id);
+                s.BirthPlace = CatalogsBL.GetLocation(s.BirthPlace.Id);                
             }
         }
 
