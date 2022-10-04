@@ -8,9 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CardBoxComponent } from './card-box/card-box.component';
+import { AlumnoComponent } from "./alumno/alumno.component";
 import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
@@ -20,9 +20,9 @@ import { ChartModule } from 'angular-highcharts';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     FetchDataComponent,
-    CardBoxComponent
+    CardBoxComponent,
+    AlumnoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,8 +30,8 @@ import { ChartModule } from 'angular-highcharts';
     FormsModule,
     ChartModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
+      { path: 'calificaciones', component: HomeComponent, pathMatch: 'full' },
+      { path: 'alumno', component: AlumnoComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],

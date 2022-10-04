@@ -17,12 +17,4 @@ export class NavMenuComponent {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
-
-  foo():void{
-    alert("Works");
-  }
-
-  updateColor() {
-    this.err=!this.err;
-  }
 }
