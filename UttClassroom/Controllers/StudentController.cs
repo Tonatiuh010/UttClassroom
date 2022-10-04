@@ -20,4 +20,23 @@ public class StudentController : CustomController
     [HttpGet("group/{id:int}")]
     public Result GetStudentGroups(int id)
         => RequestResponse(() => StudentsBL.GetGroupStudents(id));
+
+    [HttpGet("image/{id:int}")]
+    public IActionResult GetImage(int id)
+    {
+        byte[] bytes = Array.Empty<byte>();
+        var student = StudentsBL.GetStudent(id);
+
+        if (student != null)
+        {            
+            var imgBytes = student.Image;
+
+            if (imgBytes != null)
+            {
+                bytes = imgBytes;
+            }
+        }
+
+        return File(bytes, "image/jpeg");
+    }
 }

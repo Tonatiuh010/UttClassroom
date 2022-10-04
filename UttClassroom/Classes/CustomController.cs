@@ -7,6 +7,9 @@ using Engine.BO;
 using Engine.Constants;
 using D = Engine.BL.Delegates;
 using Engine.Services;
+using UttClassroom.Classes;
+using System.Text.Json;
+using UttClassroom.Classes.Converters;
 
 namespace Classes;
 
@@ -49,8 +52,33 @@ public abstract class CustomController : ControllerBase
 
         }
 
-        return result;
+        return result ?? throw new Exception("RequestResponse result is Empty");
     });
+
+    protected HttpResponseMessageResult RequestResponseJson(
+        D.ActionResult action,
+        D.ActionResult? action2 = null,
+        D.ActionResult? action3 = null,
+        D.ActionResult? action4 = null
+    )
+    {
+        Result result = RequestResponse(action, action2, action3, action4);
+        string json = JsonSerializer.Serialize(result, new JsonSerializerOptions() { 
+            Converters =
+            {
+                new JsonResultConverter(),
+            }
+        } );
+
+        var response = new HttpResponseMessage()
+        {
+            StatusCode = System.Net.HttpStatusCode.OK,
+            Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json")
+        };
+
+        return new HttpResponseMessageResult(response);
+  
+    }
 
     protected Result RequestResponse(D.ActionResult_R action) => RequestBlock( result => {
         if (action != null)

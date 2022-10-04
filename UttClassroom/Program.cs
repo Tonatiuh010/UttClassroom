@@ -2,20 +2,28 @@ using Classes;
 using Engine.BL;
 using Engine.Constants;
 using Engine.Services;
+using Microsoft.AspNetCore.Http.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+//builder.Services.AddControllers(options =>
+//{
+//    options.OutputFormatters.Add()
+//});
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
-        policy =>
-        {
-            policy.WithOrigins("http://localhost",
-                                "http://localhost:4200");
-        });
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost",
+                            "http://localhost:4200");
+    });
 });
+//builder.Services.Configure<JsonOptions>(o =>
+//{
+//    o.SerializerOptions.WriteIndented = true;
+//});
 
 var app = builder.Build();
 app.MapGet("/", () => "Classroom API is working...");

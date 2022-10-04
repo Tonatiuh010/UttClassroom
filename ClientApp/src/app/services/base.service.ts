@@ -12,11 +12,6 @@ export class BaseService {
   }
 
   public getDataBody(urlExtension: string = '', cb: (d: dataBody) => void) {
-    // let result : dataBody = {
-    //   data : null,
-    //   message: 'COMPLETE',
-    //   status : 'OK'
-    // };
 
     try {
       let obs = this.http.get<dataBody>(this.url + urlExtension);
@@ -29,7 +24,6 @@ export class BaseService {
         }
       );
 
-      //return result;
     } catch {
       throw 'Exception getting data body.';
     }
