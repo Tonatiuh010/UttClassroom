@@ -13,4 +13,6 @@ public class HistorialController : CustomController
     public Result GetStudentStats(int id)
         => RequestResponse(() => HistorialBL.GetStudentStats(id));
 
+    [HttpGet("groupStats")]
+    public Result GetGroupStats() => RequestResponse(() => HistorialBL.GetGroupStats());
 }
