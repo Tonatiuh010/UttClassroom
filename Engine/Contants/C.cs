@@ -19,6 +19,7 @@ namespace Engine.Constants {
         public const string SCHOLARLY = "SCHOLARLY";
         public const string ENGLISH = "ENGLISH";
         public const string QUARTER = "QUARTER";
+        public const string EXAM_ENTRY = "EXAM_ENTRY";
         public const string ING = "ING";
 
         /* Connection Strings */

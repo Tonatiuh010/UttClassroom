@@ -9,6 +9,8 @@ using Engine.Interfaces;
 using Engine.Interfaces.DataCollector;
 using Engine.Services;
 using Engine.Services.DataCollector;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Engine.BO
 {
@@ -19,12 +21,12 @@ namespace Engine.BO
         public StudentHistory(int studentId)
         {
             StudentId = studentId;
-            Score = String.Empty;
+            Score = string.Empty;
         }
 
         public StudentHistory()
         {
-            Score = String.Empty;
+            Score = string.Empty;
             ScoreDate = null;
             Group = null;
             SubGroup = null;
@@ -51,6 +53,7 @@ namespace Engine.BO
             }
         }
 
+        [JsonIgnore]
         public Student? Student => StudentService.Student;
     }
 }

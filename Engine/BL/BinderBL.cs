@@ -15,6 +15,9 @@ namespace Engine.BL
             AssetCollector.SearchAsset = CatalogsBL.GetAsset;
             GroupStudentsCollector.SearchStudents = StudentsBL.GetGroupStudents;
             StudentCollector.SearchStudent = StudentsBL.GetStudent;
+            HistorialCollector.SearchHistorial =  id => HistorialBL.GetStudentHistorial(id: id);
+            HistorialCollector.SearchStats = HistorialBL.GetStudentStats;
+            ContactFamilyCollector.SearchContactFamily = id => CatalogsBL.GetContactFamilies(id: id);
         }
     }
 }

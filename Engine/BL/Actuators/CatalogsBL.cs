@@ -43,12 +43,12 @@ namespace Engine.BL
         public static List<Scholarly> GetScholars(int? id = null)
             => Dal.GetScholarls(id);
 
-        public static List<ContactFamily> GetContactFamilies(int? id = null)
+        public static List<ContactFamily> GetContactFamilies(int? id = null, int? contactFamilyId = null, int? contactId = null )
         {
-            var contactFamilies = Dal.GetFamilyContacts(id);
+            var contactFamilies = Dal.GetFamilyContacts(id, contactFamilyId, contactId);
 
             foreach (var cf in contactFamilies)
-                CompleteContactFamily(cf);
+                CompleteContactFamily(cf);                            
 
             return contactFamilies;
         }

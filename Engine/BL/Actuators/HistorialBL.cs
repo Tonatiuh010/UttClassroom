@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -30,23 +29,31 @@ namespace Engine.BL
         {
             var scholarly = GetStudentHistorial(id: studentId, group: C.TSU, subGroup: C.SCHOLARLY);
             var english = GetStudentHistorial(id: studentId, group: C.TSU, subGroup: C.ENGLISH);
-            var preExam = GetStudentHistorial(id: studentId, group: C.TSU, subGroup: C.SCHOLARLY);            
+            var preExam = GetStudentHistorial(id: studentId, group: C.TSU, subGroup: C.EXAM_ENTRY);            
 
             var tsuGrades = GetStudentGrades(studentId, C.TSU, C.QUARTER);
-            var engGrades = GetStudentGrades(studentId, C.ING, C.QUARTER);
-
-            //new ItemStats("QuarterGrades", grades)
+            var engGrades = GetStudentGrades(studentId, C.ING, C.QUARTER);            
 
             return new List<ItemStats>()
             {
-                new ItemStats("scholarly", scholarly[0].Score),
-                new ItemStats("english", english[0].Score),
-                new ItemStats("preExam", preExam[0].Score),
-                new ItemStats("tsuGrades", tsuGrades),
-                new ItemStats("engGrades", engGrades),
+                new (
+                    "tsu", 
+                    ItemStats.ToJsonObject( new List<ItemStats>() {
+                        new ("scholarly", scholarly[0].Score),
+                        new ("english", english[0].Score),
+                        new ("preExam", preExam[0].Score),
+                        new ("tsuGrades", tsuGrades),
+                        new ("tsuAvg", tsuGrades.Average()),
+                    }) 
+                ),
 
-                new ItemStats("tsuAvg", tsuGrades.Average()),
-                new ItemStats("engAvg", engGrades.Average())
+                 new (
+                    "eng",
+                    ItemStats.ToJsonObject( new List<ItemStats>() {
+                        new ("engGrades", engGrades),
+                        new ("engAvg", engGrades.Average())
+                    })
+                ),                
 
             };
 

@@ -60,15 +60,22 @@ namespace Engine.BO
         {
             byte[] bytes;
 
-            if(value.GetType() == typeof(byte[]))
+            try
             {
-                bytes = (byte[])value;
-            } else
-            {
-                bytes = Array.Empty<byte>();
-            }
+                if (value.GetType() == typeof(byte[]))
+                {
+                    bytes = (byte[])value;
+                }
+                else
+                {
+                    bytes = Array.Empty<byte>();
+                }
 
-            return bytes;
+                return bytes;
+            } catch
+            {
+                return new byte[] { };
+            }            
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,34 @@ namespace Engine.Constants
             }
 
             return imageBytes;
+        }
+
+        public static bool IsNumeric(object obj)
+        {
+            if (obj == null) return false;
+
+            switch (obj)
+            {
+                case sbyte: return true;
+                case byte: return true;
+                case short: return true;
+                case ushort: return true;
+                case int: return true;
+                case uint: return true;
+                case long: return true;
+                case ulong: return true;
+                case float: return true;
+                case double: return true;
+                case decimal: return true;
+            }
+
+            if (obj != null )
+            {
+                string s = Convert.ToString(obj, CultureInfo.InvariantCulture);
+
+                return double.TryParse(s, NumberStyles.Any, NumberFormatInfo.InvariantInfo, out double _);
+            }
+            else throw new Exception("Something going on checking value!! Utils.IsNumeric()");
         }
     }
 }

@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Web.Http.Results;
 using UttClassroom.Classes;
 
 namespace UttClassroom.Controllers;
@@ -34,7 +33,7 @@ public class CatalogController : CustomController
 
     [HttpGet("contact")]
     public Result GetContacts()
-     => RequestResponse(() => CatalogsBL.GetContacts());
+        => RequestResponse(() => CatalogsBL.GetContacts());
 
     [HttpGet("contact/{id:int}")]
     public Result GetContact(int id)

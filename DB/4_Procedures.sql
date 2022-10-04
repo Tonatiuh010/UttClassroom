@@ -46,7 +46,7 @@ END //
 DELIMITER ;
 
 SET @msg = null;
-CALL GET_STUDENTS(1, @msg);
+CALL GET_STUDENTS(null, @msg);
 select @msg;
 
 /*################ GET_ADDRESS ###################*/
@@ -148,7 +148,7 @@ END //
 DELIMITER ;
 
 SET @msg = null;
-CALL GET_ASSETS(NULL, NULL, 'SALARY', @msg);
+CALL GET_ASSETS(NULL, NULL, null, @msg);
 SELECT @msg;
 
 /*################ GET_CONTACTS ###################*/

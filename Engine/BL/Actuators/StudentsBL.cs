@@ -12,8 +12,7 @@ namespace Engine.BL
     public class StudentsBL : BaseBL
     {
 
-        public static List<Student> GetStudents(int? id = null)
-            => CompleteStudents(Dal.GetStudents(id));
+        public static List<Student> GetStudents(int? id = null) => CompleteStudents(Dal.GetStudents(id));
 
         public static List<Student> GetGroupStudents(int groupId)
         {
@@ -32,8 +31,7 @@ namespace Engine.BL
             return students;
         }            
 
-        public static Student? GetStudent(int id) 
-            => GetStudents(id).FirstOrDefault();
+        public static Student? GetStudent(int id) => GetStudents(id).FirstOrDefault();
 
         private static List<Student> CompleteStudents(List<Student> students)
         {

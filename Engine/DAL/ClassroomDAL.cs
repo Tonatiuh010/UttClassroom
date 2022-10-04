@@ -48,7 +48,7 @@ namespace Engine.DAL
                         Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CODE"]),
                         Name = Validate.getDefaultStringIfDBNull(reader["NAME"]),
                         LastName = Validate.getDefaultStringIfDBNull(reader["LAST_NAME"]),
-                        Image = Validate.getDefaultBytesIfDBNull(null),
+                        //Image = Validate.getDefaultBytesIfDBNull(null),
                         Birth = Validate.getDefaultDateIfDBNull(reader["BIRTH"]),
                         BirthPlace = new ()
                         {
@@ -247,7 +247,7 @@ namespace Engine.DAL
             return model;
         }
 
-        public List<ContactFamily> GetFamilyContacts(int? id)
+        public List<ContactFamily> GetFamilyContacts(int? id, int? contactFamilyId, int? contactId)
         {
             List<ContactFamily> model = new();
 
@@ -255,7 +255,9 @@ namespace Engine.DAL
                 using var cmd = CreateCommand(SQL.GET_FAMILY_CONTACTS, CommandType.StoredProcedure);
 
                 IDataParameter pResult = CreateParameterOut("OUT_MSG", MySqlDbType.String);
-                cmd.Parameters.Add(CreateParameter("IN_CONTACT", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(CreateParameter("IN_STUDENT", id, MySqlDbType.Int32));
+                cmd.Parameters.Add(CreateParameter("IN_CONTACT_F", contactFamilyId, MySqlDbType.Int32));
+                cmd.Parameters.Add(CreateParameter("IN_CONTACT", contactId, MySqlDbType.Int32));        
                 cmd.Parameters.Add(pResult);
 
                 using var reader = cmd.ExecuteReader();

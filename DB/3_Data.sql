@@ -90,9 +90,9 @@ select * from address;
 
 ## SCHOLARLY
 INSERT INTO SCHOLARLY (SCHOOL_NAME, SCH_TYPE_ID, ADDRESS_ID, CREATED_BY) VALUES
-	('CBTIs 116', GET_ASSET('TB-PBL'), 5, 'ADMIN'),
-    ('CECyTE Florido', GET_ASSET('TB-PBL'), 6, 'ADMIN'),
-    ('CECyTE Villa del Sol', GET_ASSET('TB-PBL'), 7,'ADMIN')
+	('CBTIs 116', GET_ASSET('TB-PBL'), 6, 'ADMIN'),
+    ('CECyTE Florido', GET_ASSET('TB-PBL'), 7, 'ADMIN'),
+    ('CECyTE Villa del Sol', GET_ASSET('TB-PBL'), 8,'ADMIN')
 ;
 
 ## MAJOR 
@@ -155,7 +155,7 @@ INSERT INTO STUDENT ( STUDENT_CODE, NAME, LAST_NAME, IMAGE, BIRTH, BIRTH_LOCATIO
         GET_ASSET('EC-SLT'), ## ESTADO CIVIL
         2, ## CONTACTO
         5, ## DIRECCION
-        2, ## ESTUDIOS
+        3, ## ESTUDIOS
         NULL, ## TRABAJO
         'ADMIN' ## CREADO POR (DATOS DE AUDITORIA)
     )
