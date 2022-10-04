@@ -1,7 +1,7 @@
 <div *ngIf="group" class="container pt-2 pb-4 px-10 border">
 
   <div class="w-full bg-white border rounded drop-shadow-md mt-4">
-    <div class="text-4xl font-medium text-center py-2 border-bottom w-full">
+    <div class="sm:text-4xl text-xl font-medium text-center py-2 border-bottom w-full">
       {{group.quarter + group.key}} - {{ group.major.name }}
       <!-- {{ group.major.level.name }} -->
     </div>
@@ -20,7 +20,7 @@
 
   <div class="grid sm:grid-cols-2 gap-2 grid-cols-1 mt-4 w-full">
     <div class="w-full">
-      <div class="grid sm:grid-cols-2 grid-cols-1 gap-2 mb-3">
+      <div class="grid grid-cols-2 gap-2 mb-3">
         <div class="container-sm text-center text-4xl font-semibold border rounded w-full p-1 bg-white drop-shadow-md">
           <p class="text-sm">
             Alumnos

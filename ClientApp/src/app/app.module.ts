@@ -30,7 +30,7 @@ import { ChartModule } from 'angular-highcharts';
     FormsModule,
     ChartModule,
     RouterModule.forRoot([
-      { path: 'calificaciones', component: HomeComponent, pathMatch: 'full' },
+      { path: 'group', component: HomeComponent, pathMatch: 'full' },
       { path: 'alumno', component: AlumnoComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
