@@ -15,6 +15,12 @@ namespace Engine.Constants {
         public const string ENABLED = "ENABLED";
         public const string DISABLED = "DISABLED";
 
+        public const string TSU = "TSU";
+        public const string SCHOLARLY = "SCHOLARLY";
+        public const string ENGLISH = "ENGLISH";
+        public const string QUARTER = "QUARTER";
+        public const string ING = "ING";
+
         /* Connection Strings */
         public const string CLASSROOM = "DB_CLASSROOM";
     }
