@@ -59,5 +59,45 @@ namespace Engine.BL
 
         }
 
+        public static List<ItemStats> GetGroupStats()
+        {
+            //new ItemStats("QuarterGrades", grades)
+
+            return new List<ItemStats>()
+            {
+                new ItemStats("alumns", 20),
+
+                //personal information
+                new ItemStats("personal information", 1),
+                new ItemStats("genre", 2),
+                new ItemStats("marital status", 2),
+                new ItemStats("lives with...", 2),
+                new ItemStats("family income", 2),
+
+                //labor data
+                new ItemStats("labor data", 2),
+                new ItemStats("they work?", 2),
+                new ItemStats("workRelatedStudies", 2),
+                new ItemStats("workReason", 2),
+
+                //school data
+                new ItemStats("school data", 3),
+                new ItemStats("highSchoolType", 3),
+                new ItemStats("highSchools", 3),
+
+                //averages
+                new ItemStats("averages", 4),
+                new ItemStats("highSchool", 4),
+                new ItemStats("tsu", 4),
+                new ItemStats("engineering", 4),
+
+
+            };
+
+        }
+
     }
 }
+
+/*new ItemStats("genre", new ItemStats("Masculino", 22)),
+new ItemStats("genre", new ItemStats("Femenino", 7)),*/
