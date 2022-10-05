@@ -9,10 +9,10 @@ namespace Engine.Interfaces.DataCollector
 {
     public interface IGroupStudentsCollector
     {
-        public delegate List<Student>? SearchStudents(int groupId);
+        public delegate List<StudentExt> SearchStudents(int groupId);
 
         public int GroupId { get; set; }
-        public SearchStudents? GetStudents { get; }
-        public List<Student>? Students => GetStudents?.Invoke(GroupId);
+        public SearchStudents GetStudents { get; }
+        public List<StudentExt> Students => GetStudents(GroupId);
     }
 }

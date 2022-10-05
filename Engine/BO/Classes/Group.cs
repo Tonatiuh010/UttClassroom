@@ -21,7 +21,7 @@ namespace Engine.BO
         public Asset? Field { get; set; }
         public Asset? Period { get; set; }
         
-        public List<Student>? Students => ServiceGroup.Students;
+        public List<StudentExt>? Students => ServiceGroup.Students;
 
     }
 }

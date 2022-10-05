@@ -61,37 +61,80 @@ namespace Engine.BL
 
         public static List<ItemStats> GetGroupStats()
         {
-            //new ItemStats("QuarterGrades", grades)
-
             return new List<ItemStats>()
             {
-                new ItemStats("alumns", 20),
-
-                //personal information
-                new ItemStats("personal information", 1),
-                new ItemStats("genre", 2),
-                new ItemStats("marital status", 2),
-                new ItemStats("lives with...", 2),
-                new ItemStats("family income", 2),
-
-                //labor data
-                new ItemStats("labor data", 2),
-                new ItemStats("they work?", 2),
-                new ItemStats("workRelatedStudies", 2),
-                new ItemStats("workReason", 2),
-
-                //school data
-                new ItemStats("school data", 3),
-                new ItemStats("highSchoolType", 3),
-                new ItemStats("highSchools", 3),
-
-                //averages
-                new ItemStats("averages", 4),
-                new ItemStats("highSchool", 4),
-                new ItemStats("tsu", 4),
-                new ItemStats("engineering", 4),
-
-
+                new ItemStats("students", 29),
+                new ItemStats(
+                    "personal_information",
+                    ItemStats.ToJsonObject(new List<ItemStats> {
+                        new ItemStats("genre", new List<ItemStats> {
+                            new (CatalogsBL.GetAsset("GN-F")?.Name, 22),
+                            new (CatalogsBL.GetAsset("GN-M")?.Name, 7),
+                        }),
+                        new ItemStats("marital", new List<ItemStats> {
+                            new (CatalogsBL.GetAsset("EC-SLT")?.Name, 28),
+                            new (CatalogsBL.GetAsset("")?.Name, 1),
+                        }),
+                        new ItemStats("lives_with", new List<ItemStats> {
+                            new (CatalogsBL.GetAsset("")?.Name, 19),
+                            new (CatalogsBL.GetAsset("")?.Name, 7),
+                            new (CatalogsBL.GetAsset("")?.Name, 2),
+                            new (CatalogsBL.GetAsset("")?.Name, 1),
+                        }),
+                        new ItemStats("family_income", new List<ItemStats> {
+                            new (CatalogsBL.GetAsset("")?.Name, 18),
+                            new (CatalogsBL.GetAsset("")?.Name, 7),
+                            new (CatalogsBL.GetAsset("")?.Name, 2),
+                            new (CatalogsBL.GetAsset("")?.Name, 2),
+                        }),
+                    })
+                ),
+                new ItemStats(
+                    "labor_data",
+                    ItemStats.ToJsonObject(new List<ItemStats> {
+                        new (
+                            "work",
+                            ItemStats.ToJsonObject(new () {
+                                new ("yes", 9),
+                                new ("no", 20)
+                            })
+                        ),
+                        new (
+                            "workStudy",
+                            ItemStats.ToJsonObject(new () {
+                                new ("yes", 5),
+                                new ("no", 4)
+                            })
+                        ),
+                        new (
+                            "workReason",
+                            new List<ItemStats>() {
+                                new (CatalogsBL.GetAsset("")?.Name, 4),
+                                new (CatalogsBL.GetAsset("")?.Name, 3),
+                                new (CatalogsBL.GetAsset("")?.Name,1),
+                                new (CatalogsBL.GetAsset("")?.Name, 1)
+                            })
+                    })
+                ),              
+                new ItemStats(
+                    "scholarlyData",
+                    ItemStats.ToJsonObject(new List<ItemStats> {
+                        new ("scholarlyType", new List<ItemStats> () {
+                            new (CatalogsBL.GetAsset("")?.Name, 27),
+                            new (CatalogsBL.GetAsset("")?.Name, 2),
+                        }),
+                         new ("scholarly", new List<ItemStats> () {
+                            new ("", 3),
+                            new ("", 5),
+                            new ("", 7),
+                            new ("", 10),
+                            new ("", 2),
+                            new ("", 1),
+                            new ("", 2),
+                            new ("", 4),
+                        })
+                    })
+                ),
             };
 
         }

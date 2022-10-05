@@ -12,28 +12,29 @@ namespace Engine.BL
     public class StudentsBL : BaseBL
     {
 
-        public static List<Student> GetStudents(int? id = null) => CompleteStudents(Dal.GetStudents(id));
+        public static List<StudentExt> GetStudents(int? id = null) => CompleteStudents(Dal.GetStudents(id));
 
-        public static List<Student> GetGroupStudents(int groupId)
+        public static List<StudentExt> GetGroupStudents(int groupId)
         {
-            var students = Dal.GetGroupStudents(groupId);
+            List<StudentExt> students = Dal.GetGroupStudents(groupId);
 
             for(int i = 0; i < students.Count; i++)
             {
-                var s = students[i];
+                StudentExt s = students[i];
                 if (s.IsValid() && s != null)
                 {
                     s = GetStudent(s.Id);
                     CompleteStudent(s);
-                }                    
-            }                
+                    students[i] = s;
+                }
+            }
 
             return students;
         }            
 
-        public static Student? GetStudent(int id) => GetStudents(id).FirstOrDefault();
+        public static StudentExt? GetStudent(int id) => GetStudents(id).FirstOrDefault();
 
-        private static List<Student> CompleteStudents(List<Student> students)
+        private static List<StudentExt> CompleteStudents(List<StudentExt> students)
         {
             foreach(var s in students)            
                 CompleteStudent(s);            

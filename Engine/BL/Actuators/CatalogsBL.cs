@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Engine.BL
 {
     public class CatalogsBL : BaseBL
-    {
+    {        
 
         public static List<Address> GetAddresses(int? id = null)
         {
@@ -43,7 +43,7 @@ namespace Engine.BL
         public static List<Scholarly> GetScholars(int? id = null)
             => Dal.GetScholarls(id);
 
-        public static List<ContactFamily> GetContactFamilies(int? id = null, int? contactFamilyId = null, int? contactId = null )
+        public static List<ContactFamilyStudent> GetContactFamilies(int? id = null, int? contactFamilyId = null, int? contactId = null )
         {
             var contactFamilies = Dal.GetFamilyContacts(id, contactFamilyId, contactId);
 
@@ -58,6 +58,9 @@ namespace Engine.BL
 
         public static Asset? GetAsset(int id)
             => GetAssets(id: id).FirstOrDefault();
+
+        public static Asset? GetAsset(string code)
+            => GetAssets(code: code).FirstOrDefault();
 
         public static Contact? GetContact(int id)
             => GetContacts(id: id).FirstOrDefault();

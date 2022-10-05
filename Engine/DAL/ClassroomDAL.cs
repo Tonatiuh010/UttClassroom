@@ -29,9 +29,9 @@ namespace Engine.DAL
         private ClassroomDAL(IConectionString? conn) : base(conn) { }
 
 
-        public List<Student> GetStudents(int? id)
+        public List<StudentExt> GetStudents(int? id)
         {
-            List<Student> model = new ();
+            List<StudentExt> model = new ();
 
             TransactionBlock(this, () => {
                 using var cmd = CreateCommand(SQL.GET_STUDENTS, CommandType.StoredProcedure);
@@ -247,9 +247,9 @@ namespace Engine.DAL
             return model;
         }
 
-        public List<ContactFamily> GetFamilyContacts(int? id, int? contactFamilyId, int? contactId)
+        public List<ContactFamilyStudent> GetFamilyContacts(int? id, int? contactFamilyId, int? contactId)
         {
-            List<ContactFamily> model = new();
+            List<ContactFamilyStudent> model = new();
 
             TransactionBlock(this, () => {
                 using var cmd = CreateCommand(SQL.GET_FAMILY_CONTACTS, CommandType.StoredProcedure);
@@ -366,9 +366,9 @@ namespace Engine.DAL
             
         }
 
-        public List<Student> GetGroupStudents(int groupId)
+        public List<StudentExt> GetGroupStudents(int groupId)
         {
-            List<Student> model = new();
+            List<StudentExt> model = new();
 
             GetGroupStudents( groupId, null, reader => {
                
@@ -623,7 +623,25 @@ namespace Engine.DAL
                 }
 
                 reader.Close();
-            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetAssetKey", msg, ex));
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetAssetKeys", msg, ex));
+
+            return model;
+        }
+
+        public int GetAssetId(string code)
+        {
+            int model = 0;
+
+            TransactionBlock(this, () => {
+                using var cmd = CreateCommand(SQL.GET_ASSET_ID.Replace("{{CODE}}", code), CommandType.Text);
+                var reader = cmd.ExecuteScalar();
+
+                var res = int.TryParse(reader.ToString(), out model);
+
+                if (!res)
+                    throw new Exception("Cant get Asset ID for " + code);
+
+            }, (ex, msg) => SetExceptionResult("ClassroomDAL.GetAssetId", msg, ex));
 
             return model;
         }

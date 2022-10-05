@@ -10,14 +10,14 @@ namespace Engine.Services.DataCollector
 {
     public class GroupStudentsCollector : IGroupStudentsCollector
     {
-        public static IGroupStudentsCollector.SearchStudents? SearchStudents { get; set; }
+        public static IGroupStudentsCollector.SearchStudents SearchStudents { get; set; } = id => throw new NotImplementedException();
         public static GroupStudentsCollector Instance(int groupId) 
             => new(SearchStudents, groupId);
 
         public int GroupId { get; set; }
-        public IGroupStudentsCollector.SearchStudents? GetStudents { get; }
+        public IGroupStudentsCollector.SearchStudents GetStudents { get; }
 
-        private GroupStudentsCollector(IGroupStudentsCollector.SearchStudents? callback, int groupId)
+        private GroupStudentsCollector(IGroupStudentsCollector.SearchStudents callback, int groupId)
         {
             GroupId = groupId;
             GetStudents = callback;

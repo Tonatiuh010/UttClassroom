@@ -12,13 +12,10 @@ namespace Engine.BO
 {
     public class Student : BaseBO
     {
-        private IHistorialCollector ServiceHistorial => HistorialCollector.Instance(Id);
-        private IContactFamilyCollector ServiceContact => ContactFamilyCollector.Instance(Id);
 
         public string? Code { get; set; }
         public string? Name { get; set; }
         public string? LastName { get; set; }
-        public bool ShowStats { get; set; } = true;
 
         [JsonIgnore]
         public byte[]? Image { get; set; }
@@ -46,11 +43,17 @@ namespace Engine.BO
         public Scholarly? Scholarly { get; set; }
         public Labor? Labor { get; set; }
 
+    }
+
+    public class StudentExt : Student 
+    {
+        private IHistorialCollector ServiceHistorial => HistorialCollector.Instance(Id);
+        private IContactFamilyCollector ServiceContact => ContactFamilyCollector.Instance(Id);
         private List<StudentHistory> Historial => ServiceHistorial.Historial;
         private List<ItemStats> HistorialStats => ServiceHistorial.Stats;
-        
         public List<JsonObject> Stats => HistorialStats.Select(x => x.ToJsonObject()).ToList();
         public List<ContactFamily> Contacts => ServiceContact.Contacts;
-
+        public Student GetBase() => this;
     }
+
 }

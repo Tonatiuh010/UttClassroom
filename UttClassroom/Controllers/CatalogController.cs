@@ -3,7 +3,6 @@ using Engine.BL;
 using Engine.BO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;

@@ -20,6 +20,7 @@ namespace Engine.Constants {
         public const string GET_SCHOLARLY = "GET_SCHOLARLY";
         public const string GET_STUDENT_HISTORIAL = "GET_STUDENT_HISTORIAL";
         public const string GET_ASSET_QUERY = "SELECT DISTINCT ATTR1 FROM ASSET";
+        public const string GET_ASSET_ID = "SELECT GET_ASSET('{{CODE}}')";
         #endregion
 
 
