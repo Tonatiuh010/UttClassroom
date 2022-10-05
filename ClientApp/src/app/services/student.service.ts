@@ -31,10 +31,10 @@ export class StudentService {
     );
   }
 
-  public getStudent( id: number ) {
+  public getStudent( id: number, cb:(d: Student) => void ) {
     this.service.getDataBody(
       this.concatUrl(id.toString()),
-      res => res.data as Student
+      res => cb(res.data as Student)
     );
   }
 

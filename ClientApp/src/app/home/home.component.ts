@@ -12,7 +12,7 @@ export class HomeComponent {
   group : Group | null = null;
   constructor(private groupService : GroupService){
   }
-
+//REMPLAZAR POR ESTUDIANTE
   ngOnInit() {
     this.groupService.getGroup(1, group => this.group = group);
     this.init();

@@ -52,10 +52,10 @@
         </div>
       </div>
       <div class="p-4 font-sans text-xl shadow-md rounded-md col-span-3" id="studentSection">
-        <div class="align-middle">
-          <p class="p-2 font-sans shadow-md rounded-md text-center normal-case" id="studentName">Kevin Tonathiu Lopes Ramirez</p>
+        <div *ngIf="student"  class="align-middle">
+          <p class="p-2 font-sans shadow-md rounded-md text-center normal-case" id="studentName">{{ student.name }}</p>
         </div>
-        <div class="mt-4 grid grid-cols-2 gap-4">
+        <div *ngIf="student" class="mt-4 grid grid-cols-2 gap-4">
           <div class="p-2 font-sans shadow-md rounded-md text-center normal-case">
             <p class="" id="groupCode">TI-IDGS-9A-202203</p>
           </div>
@@ -73,10 +73,10 @@
             <p class="text-center font-medium">Fecha de nacimiento:</p>
             <p class="text-center" id="dateBirth">12-01-2001</p>
           </div>
-          <select class="p-2 bg-gray-50 font-sans shadow-md rounded-md text-center" id="placeBorn">
-            <option value="AGC" id="AGC">Aguascalientes</option>
-            <option value="BC" id="BC">Baja California</option>
-            <option value="SIN" id="SIN">Sinaloa</option>
+          <select *ngIf="asset" class="p-2 bg-gray-50 font-sans shadow-md rounded-md text-center" id="placeBorn">
+            <option value="AGC" id="AGC">{{ asset.name }}</option>
+            <option value="BC" id="BC"></option>
+            <option value="SIN" id="SIN"></option>
           </select>
           <select class="p-2 bg-gray-50 font-sans shadow-md rounded-md text-center" id="studentGender">
             <option value="GN-F" id="GN-F">Femenino</option>
