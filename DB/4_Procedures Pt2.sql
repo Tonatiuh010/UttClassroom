@@ -190,5 +190,5 @@ END //
 DELIMITER ;
 
 SET @msg = null;
-CALL GET_STUDENT_HISTORIAL(1, NULL, NULL, @msg);
+CALL GET_STUDENT_HISTORIAL(1, null, null, @msg);
 SELECT @msg;
