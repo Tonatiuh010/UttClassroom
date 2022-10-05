@@ -11,8 +11,7 @@ namespace Engine.Services.DataCollector
     public class AssetCollector : IAssetCollector
     {
         public static IAssetCollector.SearchAsset? SearchAsset { get; set; }
-        public static AssetCollector Instance(int assetId) 
-            => new(SearchAsset, assetId);
+        public static IAssetCollector Instance(int assetId) => new AssetCollector(SearchAsset, assetId);
 
         public int AssetId { get; set; }
         public IAssetCollector.SearchAsset? GetAsset { get; }

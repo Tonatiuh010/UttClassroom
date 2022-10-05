@@ -11,8 +11,7 @@ namespace Engine.Services.DataCollector
     public class GroupStudentsCollector : IGroupStudentsCollector
     {
         public static IGroupStudentsCollector.SearchStudents SearchStudents { get; set; } = id => throw new NotImplementedException();
-        public static GroupStudentsCollector Instance(int groupId) 
-            => new(SearchStudents, groupId);
+        public static IGroupStudentsCollector Instance(int groupId) => new GroupStudentsCollector(SearchStudents, groupId);
 
         public int GroupId { get; set; }
         public IGroupStudentsCollector.SearchStudents GetStudents { get; }

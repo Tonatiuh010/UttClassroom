@@ -23,8 +23,8 @@ namespace Engine.BL
                 StudentExt s = students[i];
                 if (s.IsValid() && s != null)
                 {
-                    s = GetStudent(s.Id);
-                    CompleteStudent(s);
+                    var temp = GetStudent(s.Id);
+                    s = temp ?? throw new Exception("Student was not founded! StudentsBL.GetGroupStudents()");
                     students[i] = s;
                 }
             }

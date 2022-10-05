@@ -1,5 +1,4 @@
-﻿using Org.BouncyCastle.Crypto.Tls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +16,10 @@ namespace Engine.BO
         public object Value { get; set; }
         private string JsonStr => JsonSerializer.Serialize( GetValue() );        
 
-        public ItemStats(string name, object value)
+        public ItemStats(string? name, object value)
         {
             Value = value;
-            Name = name;
+            Name = name ?? string.Empty;
         }
 
         private object? GetValue()

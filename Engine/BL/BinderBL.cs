@@ -14,13 +14,19 @@ namespace Engine.BL
         {
             AssetCollector.SearchAsset = CatalogsBL.GetAsset;
             GroupStudentsCollector.SearchStudents = StudentsBL.GetGroupStudents;
-            StudentCollector.SearchStudent = id => StudentsBL.GetStudent(id).GetBase();
+            GroupStatsCollector.SearchGoupStats = HistorialBL.GetGroupStats;
+            StudentCollector.SearchStudent = id =>
+            {
+                var student = StudentsBL.GetStudent(id);
+
+                return student ?? new BO.Student();
+            };
             HistorialCollector.SearchHistorial =  id => HistorialBL.GetStudentHistorial(id: id);
             HistorialCollector.SearchStats = HistorialBL.GetStudentStats;
             ContactFamilyCollector.SearchContactFamily = id => {
                 var contacts = CatalogsBL.GetContactFamilies(id: id);
                 return contacts.Select(x => x.GetBase()).ToList();
-            };
+            };            
         }
     }
 }

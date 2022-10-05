@@ -10,7 +10,7 @@ namespace Engine.Services.DataCollector
     public class ContactFamilyCollector : IContactFamilyCollector
     {
         public static IContactFamilyCollector.SearchContactFamily SearchContactFamily { get; set; } = id => throw new NotImplementedException();
-        public static ContactFamilyCollector Instance(int studentId) => new ContactFamilyCollector(SearchContactFamily, studentId);
+        public static IContactFamilyCollector Instance(int studentId) => new ContactFamilyCollector(SearchContactFamily, studentId);
 
         public int StudentId { get; set; }
         public IContactFamilyCollector.SearchContactFamily GetContacts { get; }
