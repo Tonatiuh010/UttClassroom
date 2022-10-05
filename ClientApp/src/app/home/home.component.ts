@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { Group } from 'src/interfaces/catalog/group';
 import { GroupService } from '../services/group.service';
+import { Asset } from "src/interfaces/catalog/asset";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent {
   group : Group | null = null;
   constructor(private groupService : GroupService){
   }
-
+//REMPLAZAR POR ESTUDIANTE
   ngOnInit() {
     this.groupService.getGroup(1, group => this.group = group);
     this.init();
