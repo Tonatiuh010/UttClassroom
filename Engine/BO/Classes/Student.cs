@@ -20,6 +20,9 @@ namespace Engine.BO
         [JsonIgnore]
         public byte[]? Image { get; set; }
 
+        [JsonPropertyName("image")]
+        public string ImageUrl { get; set; } = string.Empty;
+
         public DateTime? Birth { get; set; }
 
         public int? Age { get {

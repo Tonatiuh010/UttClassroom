@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CardBoxComponent } from './card-box/card-box.component';
 import { AlumnoComponent } from "./alumno/alumno.component";
 import { ChartModule } from 'angular-highcharts';
+import { ChartCustomComponent } from './chart-custom/chart.custom.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ChartModule } from 'angular-highcharts';
     HomeComponent,
     FetchDataComponent,
     CardBoxComponent,
-    AlumnoComponent
+    AlumnoComponent,
+    ChartCustomComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
