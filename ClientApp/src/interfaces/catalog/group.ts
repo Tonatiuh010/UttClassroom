@@ -1,4 +1,5 @@
 import { Asset } from "./asset";
+import { GroupStats } from "./group.stats";
 import { Major } from "./major";
 import { Student } from "./student";
 
@@ -11,5 +12,6 @@ export interface Group {
   field: Asset;
   period: Asset;
   students?: Student[];
+  stats?: GroupStats;
   id: number;
 }

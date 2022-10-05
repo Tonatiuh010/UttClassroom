@@ -4,6 +4,8 @@ import { Address } from "./address";
 import { Contact } from "./contact";
 import { Scholarly } from "./scholarly";
 import { Labor } from "./labor";
+import { ContactFamily } from "./contact.family";
+import { Grades } from "./grades";
 
 export interface Student {
   code: string;
@@ -17,6 +19,8 @@ export interface Student {
   contact: Contact;
   address: Address;
   scholarly: Scholarly;
+  contacts?: ContactFamily[];
+  stats?: Grades;
   labor: Labor;
   id: number;
 }
