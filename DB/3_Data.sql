@@ -117,7 +117,8 @@ INSERT INTO CONTACT (EMAIL1, EMAIL2, PHONE1, PHONE2, DESCRIPTION, CREATED_BY) VA
     ('bonitatrini@hotmail.com', NULL,'+5574740445',NULL,'Contacto Familiar - ALUMNO (0319125260)', 'ADMIN'),
     /*############################ Empresas ###########################*/
     ('Exela.RH@exelaonline.com', NULL, '+018009055300', NULL, 'Contacto Empresa - Labor (1)', 'ADMIN'),
-    ('foxconn.RH@foxconn.com', NULL, '+0170069963344', NULL, 'Contacto Empresa - Labor (2)', 'ADMIN')    
+    ('foxconn.RH@foxconn.com', NULL, '+0170069963344', NULL, 'Contacto Empresa - Labor (2)', 'ADMIN')
+    /* Añadir tus datos de contacto y datos de contacto de tus familiares */
 ;
  
 ## Labor Student
@@ -168,9 +169,9 @@ INSERT INTO STUDENT ( STUDENT_CODE, NAME, LAST_NAME, IMAGE, BIRTH, BIRTH_LOCATIO
 		1, ## LUGAR DE NACIMIENTO
 		GET_ASSET('GN-M'), ## GENERO
         GET_ASSET('EC-SLT'), ## ESTADO CIVIL
-        2, ## CONTACTO
-        5, ## DIRECCION
-        2, ## ESTUDIOS
+        2, ## CONTACTO (Cambiar contacto)
+        2, ## DIRECCION
+        3, ## ESTUDIOS
         NULL, ## TRABAJO
         'ADMIN' ## CREADO POR (DATOS DE AUDITORIA)
     )
@@ -182,6 +183,7 @@ INSERT INTO CONTACT_FAMILY (NAME, KINSHIP, WORK, IS_EMERGENCY, CONTACT_ID, STUDE
 	('Alejandra Ramirez', 'Hermana', 'Sales Manager', TRUE, 3, 1, 'ADMIN'),
 	('Ana Ramirez', 'Madre', 'Sastre', TRUE, 4, 1, 'ADMIN'),
     ('Trinidad Vargas', 'Madre', 'Property developer', TRUE, 5, 2, 'ADMIN')
+    /* Añadir datos de contacto de familiares */
 ;
 
 ## Group Student
@@ -455,7 +457,7 @@ INSERT INTO STUDENT_HISTORY (
     'ENGLISH', -- ATTR2
     NULL, -- ATTR3
     NULL, -- ATTR4
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -466,7 +468,7 @@ INSERT INTO STUDENT_HISTORY (
     'SCHOLARLY', -- ATTR2
     NULL, -- ATTR3
     NULL, -- ATTR4
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -477,7 +479,7 @@ INSERT INTO STUDENT_HISTORY (
     'EXAM_ENTRY', -- ATTR2
     NULL, -- ATTR3
     NULL, -- ATTR4
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -488,7 +490,7 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '1', -- ATTR3 
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -510,7 +512,7 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '3', -- ATTR3
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID
+    3, -- STUDENT_ID
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -521,7 +523,7 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '4', -- ATTR3 
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -532,7 +534,7 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '5', -- ATTR3
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -543,7 +545,7 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '6', -- ATTR3
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -554,7 +556,7 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '7', -- ATTR3
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (
@@ -565,6 +567,6 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '8', -- ATTR3
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 );
