@@ -17,5 +17,5 @@ public class HistorialController : CustomController
         );
 
     [HttpGet("groupStats")]
-    public Result GetGroupStats() => RequestResponse(() => HistorialBL.GetGroupStats());
+    public Result GetGroupStats() => RequestResponse(() => ItemStats.ToJsonObject (HistorialBL.GetGroupStats()));
 }

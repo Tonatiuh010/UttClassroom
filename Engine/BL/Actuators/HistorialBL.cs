@@ -73,19 +73,19 @@ namespace Engine.BL
                         }),
                         new ItemStats("marital", new List<ItemStats> {
                             new (CatalogsBL.GetAsset("EC-SLT")?.Name, 28),
-                            new (CatalogsBL.GetAsset("")?.Name, 1),
+                            new (CatalogsBL.GetAsset("EC-UL")?.Name, 1),
                         }),
                         new ItemStats("lives_with", new List<ItemStats> {
-                            new (CatalogsBL.GetAsset("")?.Name, 19),
-                            new (CatalogsBL.GetAsset("")?.Name, 7),
-                            new (CatalogsBL.GetAsset("")?.Name, 2),
-                            new (CatalogsBL.GetAsset("")?.Name, 1),
+                            new (CatalogsBL.GetAsset("VC-AP")?.Name, 19),
+                            new (CatalogsBL.GetAsset("VC-UP")?.Name, 7),
+                            new (CatalogsBL.GetAsset("VC-SL")?.Name, 2),
+                            new (CatalogsBL.GetAsset("VC-OF")?.Name, 1),
                         }),
                         new ItemStats("family_income", new List<ItemStats> {
-                            new (CatalogsBL.GetAsset("")?.Name, 18),
-                            new (CatalogsBL.GetAsset("")?.Name, 7),
-                            new (CatalogsBL.GetAsset("")?.Name, 2),
-                            new (CatalogsBL.GetAsset("")?.Name, 2),
+                            new (CatalogsBL.GetAsset("IF-510")?.Name, 18),
+                            new (CatalogsBL.GetAsset("IF-1015")?.Name, 7),
+                            new (CatalogsBL.GetAsset("IF-ME5")?.Name, 2),
+                            new (CatalogsBL.GetAsset("IF-MA15")?.Name, 2),
                         }),
                     })
                 ),
@@ -109,10 +109,10 @@ namespace Engine.BL
                         new (
                             "workReason",
                             new List<ItemStats>() {
-                                new (CatalogsBL.GetAsset("")?.Name, 4),
-                                new (CatalogsBL.GetAsset("")?.Name, 3),
-                                new (CatalogsBL.GetAsset("")?.Name,1),
-                                new (CatalogsBL.GetAsset("")?.Name, 1)
+                                new (CatalogsBL.GetAsset("RT-AEF")?.Name, 4),
+                                new (CatalogsBL.GetAsset("RT-SGI")?.Name, 3),
+                                new (CatalogsBL.GetAsset("RT-ATF")?.Name,1),
+                                new (CatalogsBL.GetAsset("RT-ST")?.Name, 1)
                             })
                     })
                 ),              
@@ -120,18 +120,18 @@ namespace Engine.BL
                     "scholarlyData",
                     ItemStats.ToJsonObject(new List<ItemStats> {
                         new ("scholarlyType", new List<ItemStats> () {
-                            new (CatalogsBL.GetAsset("")?.Name, 27),
-                            new (CatalogsBL.GetAsset("")?.Name, 2),
+                            new (CatalogsBL.GetAsset("TB-PBL")?.Name, 27),
+                            new (CatalogsBL.GetAsset("TB-PRV")?.Name, 2),
                         }),
                          new ("scholarly", new List<ItemStats> () {
-                            new ("", 3),
-                            new ("", 5),
-                            new ("", 7),
-                            new ("", 10),
-                            new ("", 2),
-                            new ("", 1),
-                            new ("", 2),
-                            new ("", 4),
+                            new ("Cecyte Rio", 3),
+                            new ("CBTIs 116", 5),
+                            new ("Conalep II", 7),
+                            new ("Cecyte Florido", 10),
+                            new ("CBTIs 58", 2),
+                            new ("Cecyte Villa del Sol", 1),
+                            new ("Cobach Plantel El Florido", 2),
+                            new ("CBTIs 237", 4),
                         })
                     })
                 ),
@@ -141,6 +141,3 @@ namespace Engine.BL
 
     }
 }
-
-/*new ItemStats("genre", new ItemStats("Masculino", 22)),
-new ItemStats("genre", new ItemStats("Femenino", 7)),*/
