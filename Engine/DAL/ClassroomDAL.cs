@@ -48,7 +48,7 @@ namespace Engine.DAL
                         Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CODE"]),
                         Name = Validate.getDefaultStringIfDBNull(reader["NAME"]),
                         LastName = Validate.getDefaultStringIfDBNull(reader["LAST_NAME"]),
-                        //Image = Validate.getDefaultBytesIfDBNull(null),
+                        Image = Validate.getDefaultBytesIfDBNull(reader["IMAGE"]),
                         Birth = Validate.getDefaultDateIfDBNull(reader["BIRTH"]),
                         BirthPlace = new ()
                         {
