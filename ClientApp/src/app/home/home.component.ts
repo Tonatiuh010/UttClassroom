@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { Group } from 'src/interfaces/catalog/group';
 import { GroupService } from '../services/group.service';
+import { Asset } from "src/interfaces/catalog/asset";
 
 @Component({
   selector: 'app-home',
