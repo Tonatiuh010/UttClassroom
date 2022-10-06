@@ -1,10 +1,9 @@
 import * as H from 'highcharts';
 import { Component, Input } from '@angular/core';
 import { Asset } from "src/interfaces/catalog/asset";
-import { AssetService } from '../services/assetFull.service';
-import { FullCatalog } from "src/interfaces/catalog/full.catalog";
+import { AssetService } from '../../services/assetFull.service';
 import { Student } from 'src/interfaces/catalog/student';
-import { StudentService } from '../services/student.service';
+import { StudentService } from '../../services/student.service';
 import { C } from 'src/constants/C';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Eng, Grades, Tsu } from 'src/interfaces/catalog/grades';
@@ -23,8 +22,7 @@ export class AlumnoComponent {
   constructor(
     private studentService : StudentService,
     private assetService : AssetService,
-    private _Activatedroute:ActivatedRoute,
-    private _router:Router,
+    private _Activatedroute: ActivatedRoute,
   ) {}
 
   ngOnInit() {

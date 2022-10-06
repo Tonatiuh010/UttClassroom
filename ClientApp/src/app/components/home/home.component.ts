@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { Group } from 'src/interfaces/catalog/group';
-import { GroupService } from '../services/group.service';
+import { GroupService } from '../../services/group.service';
 import { ChartFactory as cFact } from 'src/classes/chart.factory';
 import { ItemDisjunction, ItemStat } from 'src/interfaces/catalog/item';
 import { LaborData, PersonalInformation, ScholarlyData } from 'src/interfaces/catalog/group.stats';

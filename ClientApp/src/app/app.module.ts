@@ -3,16 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { CarouselComponent } from './carousel/carousel.component';
-import { HeaderComponent } from './header/header.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { HeaderComponent } from './components/header/header.component';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { CardBoxComponent } from './card-box/card-box.component';
-import { AlumnoComponent } from "./alumno/alumno.component";
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
+import { CardBoxComponent } from './components/card-box/card-box.component';
+import { AlumnoComponent } from "./components/alumno/alumno.component";
 import { ChartModule } from 'angular-highcharts';
-import { ChartCustomComponent } from './chart-custom/chart.custom.component';
 import { ChartFactory } from 'src/classes/chart.factory';
 
 @NgModule({
@@ -24,8 +23,7 @@ import { ChartFactory } from 'src/classes/chart.factory';
     HomeComponent,
     FetchDataComponent,
     CardBoxComponent,
-    AlumnoComponent,
-    ChartCustomComponent
+    AlumnoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
