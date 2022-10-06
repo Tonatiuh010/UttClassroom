@@ -23,13 +23,13 @@ namespace Engine.BO {
     public class InsertStatus : BaseBO
     {
         public string ObjectType => FromObject != null? FromObject.ToString() : "NOT ASSOCIATED OBJECT";
+
         [JsonIgnore]
         public Type? FromObject { get; set; }
         public DateTime InsertDate { get; set; }
 
         public InsertStatus(BaseBO baseBO)
         {
-
             Id = baseBO.Id;
             FromObject = baseBO.GetType();
             InsertDate = DateTime.Now;

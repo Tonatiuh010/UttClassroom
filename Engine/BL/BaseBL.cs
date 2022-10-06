@@ -18,11 +18,7 @@ namespace Engine.BL
         {
             DAL.Classes.DAL.OnDALError = ExceptionManager.CallbackException;
             MySqlDataBase.OnException = onConnectionError;
-        }
-
-        //public BaseBL(D.CallbackExceptionMsg onError)
-        //{
-        //}
+        }      
 
     }
 }

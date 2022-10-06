@@ -59,7 +59,7 @@ namespace DataService.MySQL
                 throw new Exception("MySQL Connection string is empty");
             }
 
-            Connection = new MySqlConnection(ConnectionString);
+            Connection = new (ConnectionString);
             Connection.StateChange += OnStateChange;
         }
 
@@ -75,15 +75,16 @@ namespace DataService.MySQL
         public MySqlCommand CreateCommand(string cmdText, CommandType type)
         => CreateCommand(cmdText, Connection, type);
 
-        // Static Methods
         private void OnStateChange(object obj, StateChangeEventArgs args)
         {
             if (args.CurrentState == ConnectionState.Closed)
             {
                 //OpenConnection();
+                //Handling Event
             }
-        }      
+        }
 
+        // Static Methods
         public static MySqlCommand CreateCommand(string cmdText, MySqlConnection conn, CommandType type) 
         => new (cmdText, conn)
         {

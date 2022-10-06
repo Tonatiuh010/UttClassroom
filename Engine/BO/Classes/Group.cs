@@ -13,8 +13,9 @@ namespace Engine.BO
     public class Group : BaseBO
     {
         private static IGroupStatsCollector ServiceStats => GroupStatsCollector.Instance;
-        private IGroupStudentsCollector ServiceGroup => GroupStudentsCollector.Instance(Id);
         private static List<ItemStats> Historial => ServiceStats.Stats;
+
+        private IGroupStudentsCollector ServiceGroup => GroupStudentsCollector.Instance(Id);        
 
         public string? Code { get; set; }
         public string? Key { get; set; }

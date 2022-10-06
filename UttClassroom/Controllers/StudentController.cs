@@ -24,19 +24,27 @@ public class StudentController : CustomController
     [HttpGet("image/{id:int}")]
     public IActionResult GetImage(int id)
     {
-        byte[] bytes = Array.Empty<byte>();
-        var student = StudentsBL.GetStudent(id);
+        try
+        {
+            byte[] bytes = Array.Empty<byte>();
+            var student = StudentsBL.GetStudent(id);
 
-        if (student != null)
-        {            
-            var imgBytes = student.Image;
-
-            if (imgBytes != null)
+            if (student != null)
             {
-                bytes = imgBytes;
-            }
-        }
+                var imgBytes = student.Image;
 
-        return File(bytes, "image/jpeg");
+                if (imgBytes != null)
+                {
+                    bytes = imgBytes;
+                }
+            }
+
+            return File(bytes, "image/jpeg");
+
+        } catch
+        {
+            return File(new byte[] {}, "image/jpeg");
+        }
+        
     }
 }

@@ -2,12 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using DataService.MySQL;
 using Engine.BO;
 using Engine.Constants;
 using Engine.Interfaces;
@@ -15,9 +9,6 @@ using Engine.Services;
 using MySql.Data.MySqlClient;
 using I = Engine.DAL.Classes;
 using D = Engine.BL.Delegates;
-using Engine.Services.DataCollector;
-using System.Reflection;
-using Engine.Interfaces.DataCollector;
 
 namespace Engine.DAL
 {
@@ -55,16 +46,14 @@ namespace Engine.DAL
                             Id = Validate.getDefaultIntIfDBNull(reader["BIRTH_LOCATION"]),
                             Country = new()
                             {
-                                Id = Validate.getDefaultIntIfDBNull(reader["COUNTRY_ID"]),
-                                //Name = Validate.getDefaultStringIfDBNull(reader["COUNTRY"])
+                                Id = Validate.getDefaultIntIfDBNull(reader["COUNTRY_ID"]),                                
                             },
                             City = new ()
                             {
-                                Id = Validate.getDefaultIntIfDBNull(reader["CITY_ID"]),
-                                //Name = Validate.getDefaultStringIfDBNull(reader["CITY"])
+                                Id = Validate.getDefaultIntIfDBNull(reader["CITY_ID"]),                                
                             },
                         },
-                        Contact = new Contact()
+                        Contact = new ()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["CONTACT_ID"]),
                             Email = Validate.getDefaultStringIfDBNull(reader["EMAIL1"]),
@@ -72,7 +61,7 @@ namespace Engine.DAL
                             Phone = Validate.getDefaultStringIfDBNull(reader["PHONE1"]),
                             Phone2 = Validate.getDefaultStringIfDBNull(reader["PHONE2"])
                         },
-                        Address = new Address()
+                        Address = new ()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["ADDRESS_ID"]),
                             Street = Validate.getDefaultStringIfDBNull(reader["STREET"]),
@@ -440,7 +429,7 @@ namespace Engine.DAL
                         Contact = new Contact
                         {
                            Id = Validate.getDefaultIntIfDBNull(reader["CONTACT_ID"]),
-                           Email = Validate.getDefaultStringIfDBNull(reader["CONTACT_ID"]),
+                           Email = Validate.getDefaultStringIfDBNull(reader["CONTACT_EMAIL"]),
                            Phone = Validate.getDefaultStringIfDBNull(reader["CONTACT_PHONE"])
                         },
                         IsStudy = Validate.getDefaultBoolIfDBNull(reader["IS_STUDY"])

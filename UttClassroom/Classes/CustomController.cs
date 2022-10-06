@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using Engine.BL;
 using Engine.BO;
 using Engine.Constants;
 using D = Engine.BL.Delegates;
 using Engine.Services;
 using UttClassroom.Classes;
-using System.Text.Json;
-using UttClassroom.Classes.Converters;
 
 namespace Classes;
 
@@ -17,16 +14,7 @@ public abstract class CustomController : ControllerBase
     protected List<RequestError> ErrorsRequest { get; set; } = new List<RequestError>();
     private ExceptionManager ErrorManager { get; set; }
 
-    public CustomController()
-    {
-        ErrorManager = new (SetErrorOnRequest);
-    }
-
-    protected void SetErrorOnRequest(Exception ex, string msg) 
-        => ErrorsRequest.Add(new RequestError() {
-            Info = msg,
-            Exception = ex
-        });
+    public CustomController() => ErrorManager = new (SetErrorOnRequest);      
 
     protected Result RequestResponse(
         D.ActionResult action,
@@ -51,51 +39,12 @@ public abstract class CustomController : ControllerBase
 
         }
 
-        return result ?? throw new Exception("RequestResponse result is Empty");
-    });
-
-    protected HttpResponseMessageResult RequestResponseJson(
-        D.ActionResult action,
-        D.ActionResult? action2 = null,
-        D.ActionResult? action3 = null,
-        D.ActionResult? action4 = null
-    )
-    {
-        Result result = RequestResponse(action, action2, action3, action4);
-        string json = JsonSerializer.Serialize(result, new JsonSerializerOptions() { 
-            Converters =
-            {
-                new JsonResultConverter(),
-            }
-        } );
-
-        var response = new HttpResponseMessage()
-        {
-            StatusCode = System.Net.HttpStatusCode.OK,
-            Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json")
-        };
-
-        return new HttpResponseMessageResult(response);
-  
-    }
-
-    protected Result RequestResponse(D.ActionResult_R action) => RequestBlock( result => {
-        if (action != null)
-        {
-            var res = action();
-            result = res ?? new Result() { Status = "ERROR", Message = "Not Result Founded!!!" };
-        }
-
-        return result;
-    });
+        return result ?? throw new Exception("RequestResponse result is Empty! RequestResponse()");
+    });   
 
     private Result RequestBlock(D.CallbackResult action)
-    {
-        //bl.DomainUrl = DomainUrl;
-        Result result = new()
-        {
-            Status = C.OK
-        };
+    {        
+        Result result = new() { Status = C.OK };
 
         try
         {
@@ -117,6 +66,12 @@ public abstract class CustomController : ControllerBase
         return result;
     }
 
+    protected void SetErrorOnRequest(Exception ex, string msg) => ErrorsRequest.Add(new RequestError()
+    {
+        Info = msg,
+        Exception = ex
+    });
+
     public static void ErrorResult(CustomController controller, Result result, Exception? ex = null)
     {
         result.Status = C.ERROR;
@@ -130,7 +85,7 @@ public abstract class CustomController : ControllerBase
         {
             result.Message = "Error doing something!";
         }
-    }
+    }    
 
     public static T? GetItem<T>(List<T> list, string? emptyMsg = null)
     {
@@ -141,8 +96,5 @@ public abstract class CustomController : ControllerBase
 
         return default;
     }
-
+    
 }
-
-// public Uri Uri => new($"{Request.Scheme}://{Request.Host}{Request.PathBase}{Request.Path}{Request.QueryString}");
-// public string DomainUrl => $"{Uri.Scheme}://{Uri.Authority}";

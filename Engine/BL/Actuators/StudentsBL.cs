@@ -11,7 +11,6 @@ namespace Engine.BL
 {
     public class StudentsBL : BaseBL
     {
-
         public static List<StudentExt> GetStudents(int? id = null) => CompleteStudents(Dal.GetStudents(id));
 
         public static List<StudentExt> GetGroupStudents(int groupId)
@@ -24,8 +23,11 @@ namespace Engine.BL
                 if (s.IsValid() && s != null)
                 {
                     var temp = GetStudent(s.Id);
-                    s = temp ?? throw new Exception("Student was not founded! StudentsBL.GetGroupStudents()");
-                    students[i] = s;
+                    if (temp != null)
+                    {
+                        s = temp;
+                        students[i] = s;
+                    }                    
                 }
             }
 
