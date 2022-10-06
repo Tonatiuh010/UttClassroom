@@ -50,7 +50,6 @@
 
     </div>
 
-
     <div *ngIf="group.students" class="w-full">
       <div class="bg-white border rounded p-3 drop-shadow-md">
         <div class="text-md font-semibold text-center w-full">
@@ -66,6 +65,16 @@
             </tr>
           </thead>
           <tbody *ngFor="let student of group.students" >
+            <tr class="tracking-tight hover:text-blue-500" [routerLink]="['/alumno', student.id]" >
+              <td>@</td>
+              <td>  {{ student.name }} {{ student.lastName }} </td>
+              <td> {{ student.code }} </td>
+            </tr>
+            <tr class="tracking-tight hover:text-blue-500" [routerLink]="['/alumno', student.id]" >
+              <td>@</td>
+              <td>  {{ student.name }} {{ student.lastName }} </td>
+              <td> {{ student.code }} </td>
+            </tr>
             <tr class="tracking-tight hover:text-blue-500" [routerLink]="['/alumno', student.id]" >
               <td>@</td>
               <td>  {{ student.name }} {{ student.lastName }} </td>

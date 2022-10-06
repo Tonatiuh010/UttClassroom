@@ -35,6 +35,7 @@ import { ChartFactory } from 'src/classes/chart.factory';
     RouterModule.forRoot([
       { path: 'group', component: HomeComponent, pathMatch: 'full' },
       { path: 'alumno/:id', component: AlumnoComponent },
+      { path: "**", redirectTo: '/group'}
       // { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],

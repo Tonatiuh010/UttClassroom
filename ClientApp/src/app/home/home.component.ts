@@ -157,8 +157,13 @@ export class HomeComponent {
           }
         ],
         {
-          categories: livesWith.map( x => x.Name )
-        }
+          type: 'category'
+        },
+        {
+          title: {
+            text: 'Viven Con'
+          }
+        },
       ),
       cFact.instance(
         'column',

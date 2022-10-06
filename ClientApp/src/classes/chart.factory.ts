@@ -98,10 +98,17 @@ export class ChartFactory {
   static setGlobalOptions() {
     H.setOptions({
       "colors": [
-        "#E10033",
-        "#000000",
-        "#767676",
-        "#E4E4E4"
+        // "#E10033",
+        // "#000000",
+        // "#767676",
+        // "#E4E4E4"
+
+
+
+        "#661429",
+        "#a08227",
+        "#B72448",
+        "#706d65"
       ],
       "chart": {
         "backgroundColor": "#FFFFFF",

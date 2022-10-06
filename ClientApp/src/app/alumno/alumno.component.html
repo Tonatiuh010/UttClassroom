@@ -1,7 +1,7 @@
-<div *ngIf="student" class="container pt-2 pb-4 px-10 border">
-  <div class="container  break-words">
-    <div class="p-2 grid xl:grid-cols-4 grid-cols-1 sm:gap-4 ">
-      <div class="p-4 font-sans text-lg  w-full h-full grid-rows-2 gap-4 shadow-md bg-white">
+<div *ngIf="student" class="container border break-words">
+
+    <div class="p-2 grid xl:grid-cols-4 grid-cols-1 sm:gap-4">
+      <div class="p-4 font-sans text-lg h-min w-full grid-rows-2 gap-4 shadow-md bg-white rounded-md">
         <div class="flex justify-center">
           <img class="object-cover h-48 w-full rounded-t-md align-middle border shadow-md" src="{{imgStudent}}" alt="avatar">
         </div>
@@ -9,7 +9,7 @@
           <p class="mx-6" id="birthStudent"> <b class="font-medium">Edad: </b> {{student.age}}</p>
         </div>
         <div class="mt-4">
-          <div *ngIf="student.contacts" class="mt-4 p-2 font-sans text-xl border rounded-md text-center">
+          <div *ngIf="student.contacts && student.contacts.length > 0" class="mt-4 p-2 font-sans text-xl border rounded-md text-center">
             <p class="text-center text-2xl font-medium">Contactos</p>
             <div *ngFor="let contact of student.contacts">
               <p class="p-1" id="nameContact"> {{ contact.name }} </p>
@@ -29,7 +29,7 @@
               <p class="p-1" id="nameBusiness">{{ student.labor.business }}</p>
               <div class="text-base text-gray-500">
                 <p class="p-1" id="nameJob">{{ student.labor.job }}</p>
-                <p class="p-1" id="contactJobEmail">{{ student.labor.contact.email }}</p>
+                <!-- <p class="p-1" id="contactJobEmail">{{ student.labor.contact.email }}</p> -->
                 <p class="p-1" id="contactJobPhone">{{ student.labor.contact.phone }}</p>
               </div>
             </div>
@@ -113,7 +113,14 @@
         </div>
         <div class="p-2 mt-4 w-full border rounded" [chart]="gradesChart">
         </div>
+        <div *ngIf="student.stats" class="p-2 mt-4">
+          <div class="grid grid-cols-3 gap-4 text-center text-3xl font-semibold w-full p-1 bg-white">
+            <div class="border rounded-md"><p class="text-sm">English: </p>{{ student.stats.tsu.english }}</div>
+            <div class="border rounded-md"><p class="text-sm">Bachillerato prd: </p>{{ student.stats.tsu.scholarly }}</div>
+            <div class="border rounded-md"><p class="text-sm">Examen Ingreso: </p>{{ student.stats.tsu.preExam }}</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
 </div>
