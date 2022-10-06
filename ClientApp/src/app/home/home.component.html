@@ -36,14 +36,14 @@
       </div>
 
       <div class="relative">
-        <div class="border drop-shadow-md rounded" [chart]="chart">
+        <div class="border drop-shadow-md  rounded" [chart]="chart">
         </div>
 
-        <div class="absolute top-5 left-1">
-          Left
+        <div class="absolute text-bold text-3xl top-2 left-3 hover:text-blue-500" (click)="prev()">
+          &#10094;
         </div>
-        <div class="absolute top-5 right-1">
-          Rigth
+        <div class="absolute text-bold text-3xl top-2 right-3 hover:text-blue-500" (click)="prev()">
+          &#10095;
         </div>
 
       </div>
@@ -66,9 +66,9 @@
             </tr>
           </thead>
           <tbody *ngFor="let student of group.students" >
-            <tr>
+            <tr class="tracking-tight hover:text-blue-500" [routerLink]="['/alumno', student.id]" >
               <td>@</td>
-              <td> {{ student.name }} {{ student.lastName }} </td>
+              <td>  {{ student.name }} {{ student.lastName }} </td>
               <td> {{ student.code }} </td>
             </tr>
           </tbody>

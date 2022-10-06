@@ -21,6 +21,6 @@ export interface Student {
   scholarly: Scholarly;
   contacts?: ContactFamily[];
   stats?: Grades;
-  labor: Labor;
+  labor?: Labor;
   id: number;
 }

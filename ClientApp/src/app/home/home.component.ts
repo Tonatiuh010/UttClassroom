@@ -16,6 +16,9 @@ export class HomeComponent {
   chart : Chart | undefined;
   gradesChart : Chart | undefined;
   group : Group | null = null;
+  index: number = 0;
+  private chartSets : H.Options[] | undefined;
+
   constructor(private groupService : GroupService){
   }
 
@@ -179,9 +182,48 @@ export class HomeComponent {
       ),
     ];
 
-    this.chart = new Chart(chartsSets[ chartsSets.length - 1 ]);
+    this.chartSets = chartsSets;
     this.setGrades(grades);
+    this.setChart(this.index);
 
+  }
+
+  next () {
+    let temp: number = this.index + 1;
+
+    if (this.chartSets) {
+      if (temp > this.chartSets?.length - 1) {
+        temp = 0;
+      }
+
+      this.index = temp;
+      this.setChart(this.index)
+    }
+
+  }
+
+  prev() {
+    let temp: number = this.index - 1;
+
+    if (this.chartSets) {
+      if (temp < 0) {
+        temp = this.chartSets.length - 1;
+      }
+
+      this.index = temp;
+      this.setChart(this.index)
+    }
+  }
+
+  setChart(i: number) {
+
+    if(this.chart) {
+      this.chart.destroy();
+    }
+
+    if (this.chartSets) {
+      this.chart = new Chart(this.chartSets[ i ]);
+    }
   }
 
   setGrades(grades: Grades) {
