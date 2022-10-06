@@ -12,7 +12,7 @@ public class HistorialController : CustomController
     [HttpGet("{id:int}")]
     public Result GetStudentStats(int id)
         => RequestResponse(
-            () => HistorialBL.GetStudentStats(id).Select(x => x.ToJsonObject()),
+            () => ItemStats.ToJsonObject( HistorialBL.GetStudentStats(id) ),
             () => StudentsBL.GetStudent(id)
         );
 

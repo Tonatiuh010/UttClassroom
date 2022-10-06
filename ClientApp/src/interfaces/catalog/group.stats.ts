@@ -1,3 +1,4 @@
+import { Grades } from "./grades";
 import { ItemStat, ItemDisjunction } from "./item";
 
 export interface GroupStats {
@@ -5,7 +6,6 @@ export interface GroupStats {
   personal_information: PersonalInformation;
   labor_data: LaborData;
   scholarlyData: ScholarlyData;
-  grades: any;
 }
 
 export interface PersonalInformation {

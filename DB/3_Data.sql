@@ -502,7 +502,7 @@ INSERT INTO STUDENT_HISTORY (
     'QUARTER', -- ATTR2
     '2', -- ATTR3 
     NULL, -- ATTR4 (INICIO DE PERIODO)
-    2, -- STUDENT_ID,
+    3, -- STUDENT_ID,
     'ADMIN' -- CREATED BY        
 ),
 (

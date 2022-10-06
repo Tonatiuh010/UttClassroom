@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Student } from 'src/interfaces/catalog/student';
 
 @Component({
   selector: 'app-card-box',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-box.component.css']
 })
 export class CardBoxComponent implements OnInit {
-
+  @Input()
+  student : Student | undefined;
   constructor() { }
 
   ngOnInit(): void {
+    this.student
   }
 
 }

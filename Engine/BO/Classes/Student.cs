@@ -54,7 +54,7 @@ namespace Engine.BO
         private IContactFamilyCollector ServiceContact => ContactFamilyCollector.Instance(Id);
         private List<StudentHistory> Historial => ServiceHistorial.Historial;
         private List<ItemStats> HistorialStats => ServiceHistorial.Stats;
-        public List<JsonObject> Stats => HistorialStats.Select(x => x.ToJsonObject()).ToList();
+        public JsonObject Stats => ItemStats.ToJsonObject( HistorialStats );
         public List<ContactFamily> Contacts => ServiceContact.Contacts;
         public Student GetBase() => this;
     }

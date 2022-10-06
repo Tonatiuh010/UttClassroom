@@ -20,29 +20,34 @@
 
   <div class="grid sm:grid-cols-2 gap-2 grid-cols-1 mt-4 w-full">
     <div class="w-full">
-      <div class="grid grid-cols-2 gap-2 mb-3">
+      <div *ngIf="group.stats && group.grades" class="grid grid-cols-2 gap-2 mb-3">
         <div class="container-sm text-center text-4xl font-semibold border rounded w-full p-1 bg-white drop-shadow-md">
           <p class="text-sm">
             Alumnos
           </p>
-          45
+          {{ group.stats.students }}
         </div>
         <div class="container-sm text-center text-4xl font-semibold border rounded w-full p-1 bg-white drop-shadow-md">
           <p class="text-sm">
             Promedio
           </p>
-          9.0
+          {{ group.grades.eng.engAvg.toFixed(2) }}
         </div>
       </div>
 
       <div class="relative">
+        <div class="border drop-shadow-md rounded" [chart]="chart">
+        </div>
+
+        <div class="absolute top-5 left-1">
+          Left
+        </div>
+        <div class="absolute top-5 right-1">
+          Rigth
+        </div>
 
       </div>
 
-      <div class="border drop-shadow-md rounded" [chart]="chart">
-        <!-- <app-chart-custom [chart]="chart">
-        </app-chart-custom> -->
-      </div>
     </div>
 
 
@@ -71,4 +76,8 @@
       </div>
     </div>
   </div>
+
+  <div class="mt-4 w-full border drop-shadow-md rounded" [chart]="gradesChart">
+  </div>
+
 </div>

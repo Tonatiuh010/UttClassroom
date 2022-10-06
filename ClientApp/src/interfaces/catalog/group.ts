@@ -2,6 +2,7 @@ import { Asset } from "./asset";
 import { GroupStats } from "./group.stats";
 import { Major } from "./major";
 import { Student } from "./student";
+import { Grades } from "./grades";
 
 export interface Group {
   code: string;
@@ -13,5 +14,6 @@ export interface Group {
   period: Asset;
   students?: Student[];
   stats?: GroupStats;
+  grades?: Grades;
   id: number;
 }

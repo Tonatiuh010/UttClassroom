@@ -13,6 +13,7 @@ import { CardBoxComponent } from './card-box/card-box.component';
 import { AlumnoComponent } from "./alumno/alumno.component";
 import { ChartModule } from 'angular-highcharts';
 import { ChartCustomComponent } from './chart-custom/chart.custom.component';
+import { ChartFactory } from 'src/classes/chart.factory';
 
 @NgModule({
   declarations: [
@@ -40,4 +41,9 @@ import { ChartCustomComponent } from './chart-custom/chart.custom.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    ChartFactory.setGlobalOptions();
+  }
+
+}
