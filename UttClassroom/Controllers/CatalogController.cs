@@ -79,7 +79,7 @@ public class CatalogController : CustomController
         => RequestResponse(() => CatalogsBL.GetScholarly(id));
 
     [HttpGet("full")]
-    public Result GetFullAsset1()
+    public Result GetFullAssets()
         => RequestResponse(() => CatalogsBL.GetFullAsset());
 
 }

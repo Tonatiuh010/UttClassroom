@@ -34,26 +34,27 @@ namespace Engine.DAL
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read()) 
                 {
-                    model.Add(new() { 
+                    model.Add(new()
+                    {
                         Id = Validate.getDefaultIntIfDBNull(reader["STUDENT_ID"]),
                         Code = Validate.getDefaultStringIfDBNull(reader["STUDENT_CODE"]),
                         Name = Validate.getDefaultStringIfDBNull(reader["NAME"]),
                         LastName = Validate.getDefaultStringIfDBNull(reader["LAST_NAME"]),
                         Image = Validate.getDefaultBytesIfDBNull(reader["IMAGE"]),
                         Birth = Validate.getDefaultDateIfDBNull(reader["BIRTH"]),
-                        BirthPlace = new ()
+                        BirthPlace = new()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["BIRTH_LOCATION"]),
                             Country = new()
                             {
-                                Id = Validate.getDefaultIntIfDBNull(reader["COUNTRY_ID"]),                                
+                                Id = Validate.getDefaultIntIfDBNull(reader["COUNTRY_ID"]),
                             },
-                            City = new ()
+                            City = new()
                             {
-                                Id = Validate.getDefaultIntIfDBNull(reader["CITY_ID"]),                                
+                                Id = Validate.getDefaultIntIfDBNull(reader["CITY_ID"]),
                             },
                         },
-                        Contact = new ()
+                        Contact = new()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["CONTACT_ID"]),
                             Email = Validate.getDefaultStringIfDBNull(reader["EMAIL1"]),
@@ -61,52 +62,53 @@ namespace Engine.DAL
                             Phone = Validate.getDefaultStringIfDBNull(reader["PHONE1"]),
                             Phone2 = Validate.getDefaultStringIfDBNull(reader["PHONE2"])
                         },
-                        Address = new ()
+                        Address = new()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["ADDRESS_ID"]),
                             Street = Validate.getDefaultStringIfDBNull(reader["STREET"]),
                             Number = Validate.getDefaultStringIfDBNull(reader["NUMBER"]),
                             Neighborhood = Validate.getDefaultStringIfDBNull(reader["NEIGHBORHOOD"]),
-                            Location = new () { 
+                            Location = new()
+                            {
                                 Id = Validate.getDefaultIntIfDBNull(reader["ADDRESS_LOCATION"])
                             }
                         },
-                        Genre = new ()
+                        Genre = new()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["GENRE_ID"]),
                             Code = Validate.getDefaultStringIfDBNull(reader["GENRE_CODE"]),
                             Name = Validate.getDefaultStringIfDBNull(reader["GENRE"])
                         },
-                        Marital = new ()
+                        Marital = new()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["MARITAL_ID"]),
                             Code = Validate.getDefaultStringIfDBNull(reader["MARITAL_CODE"]),
                             Name = Validate.getDefaultStringIfDBNull(reader["MARITAL"])
                         },
-                        Labor = new ()
+                        Labor = new()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["LABOR_ID"]),
                             Department = Validate.getDefaultStringIfDBNull(reader["DEPARTMENT"]),
                             Business = Validate.getDefaultStringIfDBNull(reader["BUSINESS"]),
-                            Address = new ()
+                            Address = new()
                             {
                                 Id = Validate.getDefaultIntIfDBNull(reader["LABOR_ADDRESS"])
                             },
-                            Contact = new ()
+                            Contact = new()
                             {
                                 Id = Validate.getDefaultIntIfDBNull(reader["LABOR_CONTACT"])
                             },
                             IsStudy = Validate.getDefaultBoolIfDBNull(reader["IS_STUDY"])
                         },
-                        Scholarly = new ()
+                        Scholarly = new()
                         {
                             Id = Validate.getDefaultIntIfDBNull(reader["SCHOLARLY_ID"]),
                             Name = Validate.getDefaultStringIfDBNull(reader["SCHOLARLY_ID"]),
-                            Address = new ()
+                            Address = new()
                             {
                                 Id = Validate.getDefaultIntIfDBNull(reader["SCHOLARLY_ADDRESS"])
                             },
-                            Type = new ()
+                            Type = new()
                             {
                                 Id = Validate.getDefaultIntIfDBNull(reader["SCH_TYPE_ID"])
                             }
